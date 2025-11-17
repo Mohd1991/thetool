@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4K058HPDMN');
+    </script>
+    <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>   
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول PDF إلى Excel | حل على جانب العميل</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            color: white;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
+            text-decoration: none;
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 126, 95, 0.6);
+        }
+        
+        .home-btn i {
+            font-size: 18px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .converter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .upload-section, .preview-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .drop-area {
+            border: 3px dashed #1a2a6c;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9ff;
+            margin-bottom: 25px;
+        }
+        
+        .drop-area:hover, .drop-area.dragover {
+            background: #e6f0ff;
+            border-color: #4a7bff;
+        }
+        
+        .drop-area i {
+            font-size: 64px;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .drop-area p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #1a2a6c, #4a7bff);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(26, 42, 108, 0.3);
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 42, 108, 0.4);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn i {
+            font-size: 20px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .preview-area {
+            min-height: 350px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 20px;
+            overflow: auto;
+            background: white;
+            margin-top: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: right;
+        }
+        
+        th {
+            background-color: #1a2a6c;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9ff;
+        }
+        
+        .instructions {
+            margin-top: 40px;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step i {
+            font-size: 40px;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .step h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature i {
+            font-size: 48px;
+            color: #1a2a6c;
+            margin-bottom: 20px;
+        }
+        
+        .progress-container {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #1a2a6c, #4a7bff);
+            width: 0;
+            transition: width 0.4s ease;
+        }
+        
+        .status {
+            text-align: center;
+            font-weight: 500;
+            color: #555;
+            margin: 15px 0;
+            min-height: 24px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .converter-container {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .home-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 0 auto 20px;
+                display: flex;
+                justify-content: center;
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://thetools.in" class="home-btn">
+                <i class="fas fa-home"></i> الرئيسية
+            </a>
+            <h1><i class="fas fa-file-excel"></i> محول PDF إلى Excel</h1>
+            <p>قم بتحويل ملفات PDF إلى جداول بيانات Excel مباشرة في متصفحك - لا حاجة للخادم! 100% مجاني وآمن.</p>
+        </header>
+        
+        <main class="card">
+            <div class="converter-container">
+                <div class="upload-section">
+                    <h2><i class="fas fa-upload"></i> رفع ملف PDF</h2>
+                    <div class="drop-area" id="dropArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اسحب وأفلت ملف PDF هنا</p>
+                        <p>أو</p>
+                        <button class="btn" id="browseBtn"><i class="fas fa-folder-open"></i> استعراض الملفات</button>
+                        <input type="file" id="fileInput" class="file-input" accept=".pdf">
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="status" id="status">جاهز للتحويل...</div>
+                    
+                    <button class="btn" id="convertBtn" disabled>
+                        <i class="fas fa-sync-alt"></i> تحويل إلى Excel
+                    </button>
+                    <button class="btn" id="downloadBtn" disabled>
+                        <i class="fas fa-download"></i> تحميل ملف Excel
+                    </button>
+                </div>
+                
+                <div class="preview-section">
+                    <h2><i class="fas fa-table"></i> معاينة Excel</h2>
+                    <div class="preview-area" id="previewArea">
+                        <p>ستظهر البيانات المحولة هنا بمجرد اكتمال المعالجة.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="instructions">
+            <h2><i class="fas fa-info-circle"></i> كيفية تحويل PDF إلى Excel</h2>
+            <div class="steps">
+                <div class="step">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>الخطوة 1: رفع PDF</h3>
+                    <p>حدد ملف PDF بالنقر على زر "استعراض الملفات" أو اسحبه وأفلته في منطقة الرفع.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-cogs"></i>
+                    <h3>الخطوة 2: التحويل</h3>
+                    <p>انقر على زر "تحويل إلى Excel". ستقوم أداتنا باستخراج كل النصوص والجداول من ملف PDF.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>الخطوة 3: التحميل</h3>
+                    <p>قم بتحميل ملف Excel المحول بنقرة واحدة. بياناتك لا يتم رفعها إلى أي خادم.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>آمن 100%</h3>
+                <p>ملفاتك لا تترك جهازك. كل المعالجة تتم في متصفحك.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>معالجة سريعة</h3>
+                <p>قم بتحويل PDF إلى Excel في ثوانٍ باستخدام حلنا المحسن على جانب العميل.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-lock"></i>
+                <h3>لا حاجة للتسجيل</h3>
+                <p>لا حاجة للتسجيل. قم بتحويل عدد غير محدود من الملفات مجانًا.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>يتوافق مع الجوال</h3>
+                <p>يعمل على جميع الأجهزة - سطح المكتب، اللوحي، والهواتف المحمولة.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>جميع العمليات تتم في متصفحك المحلي. نحن لا نقوم بجمع أو تخزين البيانات أبدًا.</p>
+    </footer>
+    
+    <script>
+        // Set up PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+        
+        // DOM elements
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const convertBtn = document.getElementById('convertBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressBar = document.getElementById('progressBar');
+        const status = document.getElementById('status');
+        const previewArea = document.getElementById('previewArea');
+        
+        let pdfData = null;
+        let extractedText = [];
+        let excelFile = null;
+        
+        // Event listeners
+        browseBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Drag and drop events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.classList.add('dragover');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('dragover');
+        }
+        
+        // Handle file drop
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+        
+        function handleFileSelect(e) {
+            handleFiles(e.target.files);
+        }
+        
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            
+            const file = files[0];
+            if (file.type !== 'application/pdf') {
+                status.textContent = 'يرجى اختيار ملف PDF.';
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                pdfData = new Uint8Array(e.target.result);
+                status.textContent = `تم تحميل الملف: ${file.name}`;
+                convertBtn.disabled = false;
+                downloadBtn.disabled = true;
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+        
+        // Convert button event
+        convertBtn.addEventListener('click', convertPDFtoExcel);
+        
+        // Download button event
+        downloadBtn.addEventListener('click', downloadExcel);
+        
+        // Conversion function
+        async function convertPDFtoExcel() {
+            if (!pdfData) {
+                status.textContent = 'يرجى اختيار ملف PDF أولاً.';
+                return;
+            }
+            
+            try {
+                status.textContent = 'جاري معالجة PDF...';
+                progressBar.style.width = '25%';
+                
+                // Load PDF document
+                const pdf = await pdfjsLib.getDocument({data: pdfData}).promise;
+                const numPages = pdf.numPages;
+                extractedText = [];
+                
+                // Extract text from each page
+                for (let i = 1; i <= numPages; i++) {
+                    status.textContent = `جاري معالجة صفحة ${i} من ${numPages}...`;
+                    progressBar.style.width = `${25 + (i / numPages) * 50}%`;
+                    
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    
+                    // Extract text items
+                    const pageText = textContent.items.map(item => item.str).join(' ');
+                    extractedText.push(pageText);
+                }
+                
+                status.textContent = 'جاري التحويل إلى Excel...';
+                progressBar.style.width = '85%';
+                
+                // Prepare data for Excel
+                const excelData = [];
+                
+                // Add header row
+                excelData.push(['المحتوى المستخرج من PDF']);
+                
+                // Add each page as a row
+                extractedText.forEach((text, index) => {
+                    excelData.push([`الصفحة ${index + 1}`, text]);
+                });
+                
+                // Create worksheet
+                const ws = XLSX.utils.aoa_to_sheet(excelData);
+                
+                // Create workbook and add the worksheet
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "محتوى PDF");
+                
+                // Generate Excel file
+                excelFile = XLSX.write(wb, {bookType: 'xlsx', type: 'array'});
+                
+                // Update UI
+                status.textContent = `اكتمل التحويل! تمت معالجة ${numPages} صفحات.`;
+                progressBar.style.width = '100%';
+                downloadBtn.disabled = false;
+                
+                // Create preview
+                createPreview(excelData);
+                
+            } catch (error) {
+                console.error('Conversion error:', error);
+                status.textContent = 'خطأ: ' + error.message;
+                progressBar.style.width = '0';
+            }
+        }
+        
+        function createPreview(data) {
+            let html = '<table>';
+            
+            // Add header row
+            html += '<tr>';
+            html += `<th>${data[0][0]}</th>`;
+            html += '</tr>';
+            
+            // Add data rows
+            for (let i = 1; i < data.length; i++) {
+                html += '<tr>';
+                html += `<td><strong>${data[i][0]}</strong><br>${data[i][1]}</td>`;
+                html += '</tr>';
+            }
+            
+            html += '</table>';
+            previewArea.innerHTML = html;
+        }
+        
+        function downloadExcel() {
+            if (!excelFile) {
+                status.textContent = 'لا يوجد ملف Excel للتحميل. قم بالتحويل أولاً.';
+                return;
+            }
+            
+            // Create Blob and download
+            const blob = new Blob([excelFile], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ملف-excel-المحول.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            status.textContent = 'تم تحميل ملف Excel!';
+        }
+    </script>
+<script>
+        // Block right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Block keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Disable F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                alert("تم تعطيل F12!");
+            }
+            // Disable Shift + C
+            else if (e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                alert("تم تعطيل Shift+C!");
+            }
+            // Disable Ctrl + U
+            else if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert("تم تعطيل Ctrl+U!");
+            }
+            // Disable Ctrl + C / Ctrl + V
+            else if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'C' || e.key === 'V')) {
+                e.preventDefault();
+                alert("تم تعطيل النسخ/اللصق!");
+            }
+        });
+
+        // Extra: Disable copy/paste via right-click or edit menu
+        document.addEventListener('copy', (e) => e.preventDefault());
+        document.addEventListener('paste', (e) => e.preventDefault());
+        document.addEventListener('cut', (e) => e.preventDefault());
+    </script>
+
+</body>
+</html>

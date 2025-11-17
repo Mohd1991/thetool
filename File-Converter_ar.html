@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+   <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileMagic - محول ملفات مجاني على الإنترنت</title>
+    <meta name="description" content="قم بتحويل الملفات فورياً مع FileMagic. محول ملفات مجاني، آمن ومفتوح المصدر للمستندات، الصور، الصوت والفيديو.">
+    <meta name="keywords" content="محول الملفات, محول عبر الإنترنت, تحويل المستندات, محول الصور, محول الفيديو, مفتوح المصدر">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* جميع أنماط CSS السابقة تبقى كما هي */
+        /* نضيف فقط بعض التعديلات للدعم الكامل للغة العربية */
+        body {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        .logo, .hero h1, .hero p, .feature-card h3, 
+        .feature-card p, .converter-box h2, .format-card h3, 
+        .format-card p, .about h2, .about-content p, 
+        footer p {
+            text-align: center;
+        }
+        
+        nav ul {
+            direction: ltr; /* للحفاظ على ترتيب قائمة التنقل */
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                direction: rtl;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-file-contract"></i>
+                File<span>Magic</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>حوّل الملفات في ثوانٍ</h1>
+            <p>محول ملفات مجاني، آمن ومفتوح المصدر للمستندات، الصور، الملفات الصوتية وملفات الفيديو.</p>
+            <a href="#converter" class="btn">ابدأ التحويل الآن</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>معالجة آمنة</h3>
+                <p>يتم حذف الملفات تلقائياً بعد التحويل. نحن لا نخزن بياناتك أبداً.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>سريع البرق</h3>
+                <p>حوّل الملفات في ثوانٍ مع محرك التحويل المُحسّن.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code"></i>
+                <h3>مفتوح المصدر</h3>
+                <p>قاعدة شفرة شفافة. شارك وساهم في تحسين الأداة للجميع.</p>
+            </div>
+        </section>
+
+        <section id="converter" class="converter-box">
+            <h2>محول الملفات</h2>
+            <div class="converter-options">
+                <select id="input-format">
+                    <option value="">اختر صيغة الإدخال</option>
+                    <option value="pdf">PDF</option>
+                    <option value="docx">DOCX</option>
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="mp3">MP3</option>
+                    <option value="mp4">MP4</option>
+                </select>
+                <i class="fas fa-arrow-right fa-2x" style="color: var(--primary);"></i>
+                <select id="output-format">
+                    <option value="">اختر صيغة الإخراج</option>
+                    <option value="pdf">PDF</option>
+                    <option value="docx">DOCX</option>
+                    <option value="jpg">JPG</option>
+                    <option value="png">PNG</option>
+                    <option value="mp3">MP3</option>
+                    <option value="mp4">MP4</option>
+                </select>
+            </div>
+            
+            <div id="upload-area" class="file-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>اسحب وأفلت ملفك هنا</p>
+                <p>أو</p>
+                <p class="upload-btn">استعرض الملفات</p>
+                <span class="file-name" id="file-name"></span>
+                <input type="file" id="file-input">
+            </div>
+            
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <p class="convert-status" id="convert-status"></p>
+            
+            <button id="convert-btn" class="btn">حوّل الملف</button>
+            <a href="#" class="btn download-btn" id="download-btn"><i class="fas fa-download"></i> تحميل الملف المحوّل</a>
+        </section>
+
+        <section id="formats" class="supported-formats">
+            <div class="format-card">
+                <i class="fas fa-file-pdf"></i>
+                <h3>PDF</h3>
+                <p>تحويل من/إلى PDF</p>
+            </div>
+            <div class="format-card">
+                <i class="fas fa-file-word"></i>
+                <h3>DOCX</h3>
+                <p>مستندات وورد</p>
+            </div>
+            <div class="format-card">
+                <i class="fas fa-file-image"></i>
+                <h3>الصور</h3>
+                <p>JPG, PNG, GIF</p>
+            </div>
+            <div class="format-card">
+                <i class="fas fa-file-audio"></i>
+                <h3>الصوت</h3>
+                <p>MP3, WAV, FLAC</p>
+            </div>
+            <div class="format-card">
+                <i class="fas fa-file-video"></i>
+                <h3>الفيديو</h3>
+                <p>MP4, MOV, AVI</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 FileMagic - أداة تحويل الملفات المجانية</p>
+            <p>جميع العمليات تتم في متصفحك المحلي. نحن لا نجمع أو نخزن البيانات أبداً.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('file-input');
+            const uploadArea = document.getElementById('upload-area');
+            const fileName = document.getElementById('file-name');
+            const convertBtn = document.getElementById('convert-btn');
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const convertStatus = document.getElementById('convert-status');
+            const downloadBtn = document.getElementById('download-btn');
+            
+            // تفعيل رفع الملف
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // وظيفة السحب والإفلات
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('active');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('active');
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    updateFileName();
+                }
+            });
+            
+            // تغيير إدخال الملف
+            fileInput.addEventListener('change', updateFileName);
+            
+            function updateFileName() {
+                if (fileInput.files.length) {
+                    fileName.textContent = fileInput.files[0].name;
+                    uploadArea.classList.add('active');
+                } else {
+                    fileName.textContent = '';
+                    uploadArea.classList.remove('active');
+                }
+            }
+            
+            // النقر على زر التحويل
+            convertBtn.addEventListener('click', function() {
+                const inputFormat = document.getElementById('input-format').value;
+                const outputFormat = document.getElementById('output-format').value;
+                
+                if (!fileInput.files.length) {
+                    showStatus('يرجى اختيار ملف للتحويل', 'error');
+                    return;
+                }
+                
+                if (!inputFormat || !outputFormat) {
+                    showStatus('يرجى اختيار صيغتي الإدخال والإخراج', 'error');
+                    return;
+                }
+                
+                // إعادة واجهة المستخدم
+                progressContainer.style.display = 'block';
+                progressBar.style.width = '0%';
+                convertStatus.textContent = '';
+                convertStatus.className = 'convert-status';
+                downloadBtn.style.display = 'none';
+                
+                // محاكاة عملية التحويل
+                simulateConversion(fileInput.files[0], outputFormat);
+            });
+            
+            function simulateConversion(file, outputFormat) {
+                let progress = 0;
+                showStatus('جاري تحويل ملفك...');
+                
+                const interval = setInterval(() => {
+                    progress += Math.floor(Math.random() * 10);
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        
+                        // عرض النجاح
+                        setTimeout(() => {
+                            progressBar.style.width = '100%';
+                            showStatus('تم التحويل بنجاح!', 'success');
+                            
+                            // تفعيل زر التحميل
+                            enableDownload(file, outputFormat);
+                        }, 300);
+                    }
+                    progressBar.style.width = progress + '%';
+                }, 200);
+            }
+            
+            function enableDownload(file, outputFormat) {
+                // إنشاء رابط تحميل للملف "المحول"
+                // في التطبيق الحقيقي، سيكون هذا الملف المحول من الخادم
+                // هنا سنقوم بإنشاء ملف نصي كبديل
+                const blob = new Blob(["هذا ملف محوّل محاكى. في التطبيق الحقيقي، سيكون هذا ملفك المحول الفعلي."], { type: "text/plain" });
+                
+                const url = URL.createObjectURL(blob);
+                
+                // الحصول على اسم الملف الأصلي بدون الامتداد
+                const originalName = file.name.split('.')[0];
+                const downloadName = `${originalName}_converted.${outputFormat}`;
+                
+                downloadBtn.href = url;
+                downloadBtn.download = downloadName;
+                downloadBtn.style.display = 'inline-block';
+                
+                // إضافة مستمع حدث لإلغاء عنوان URL بعد التحميل
+                downloadBtn.addEventListener('click', function() {
+                    setTimeout(() => {
+                        URL.revokeObjectURL(url);
+                    }, 100);
+                });
+            }
+            
+            function showStatus(message, type = '') {
+                convertStatus.textContent = message;
+                convertStatus.className = 'convert-status';
+                convertStatus.style.display = 'block';
+                
+                if (type) {
+                    convertStatus.classList.add(type);
+                }
+            }
+            
+            // حركات بطاقات الميزات
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

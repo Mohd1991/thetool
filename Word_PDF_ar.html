@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4K058HPDMN');
+    </script>
+    <!--Google Adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+        crossorigin="anonymous"></script>
+    <!-- Display Ad_Horizontal -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2103216480432659"
+        data-ad-slot="4909484509"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> 
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل Word إلى PDF - محول مستندات مجاني عبر الإنترنت</title>
+    <meta name="description" content="تحويل Word إلى PDF مجاناً عبر الإنترنت. احفظ تنسيق المستندات العربية والإنجليزية. لا حاجة للتسجيل أو التحميل - كل شيء يتم في متصفحك.">
+    <meta name="keywords" content="تحويل Word إلى PDF, Word لـ PDF, محول مستندات, DOCX إلى PDF, تحويل ملفات Word, محول مجاني, Word عربي, PDF عربي">
+    <meta name="author" content="Word to PDF Converter">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx2html/1.0.4/docx2html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2c3e50, #1a2a6c);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            padding: 30px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #3498db;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            background-image: linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 75%, #f0f8ff 75%, #f0f8ff), 
+                              linear-gradient(45deg, #f0f8ff 25%, transparent 25%, transparent 75%, #f0f8ff 75%, #f0f8ff);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        
+        .upload-area.active {
+            background-color: #e3f2fd;
+            border-color: #2980b9;
+            transform: scale(0.99);
+        }
+        
+        .upload-area i {
+            font-size: 60px;
+            color: #3498db;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .upload-area h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .upload-area p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            min-width: 220px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            background: linear-gradient(to right, #bdc3c7, #95a5a6);
+        }
+        
+        .btn-convert {
+            background: linear-gradient(to right, #3498db, #1a2a6c);
+        }
+        
+        .btn-download {
+            background: linear-gradient(to right, #27ae60, #219653);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-download:hover {
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        .status {
+            margin: 25px 0;
+            text-align: center;
+            min-height: 24px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f1f8ff;
+            border-left: 4px solid #3498db;
+        }
+        
+        .status.error {
+            background: #fdeded;
+            border-left: 4px solid #e74c3c;
+            color: #e74c3c;
+        }
+        
+        .status.success {
+            background: #edf7ed;
+            border-left: 4px solid #27ae60;
+            color: #27ae60;
+        }
+        
+        .preview-area {
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f9f9f9;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .preview-area h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        #preview {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            min-height: 250px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: right;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-card:nth-child(1) i { color: #3498db; }
+        .feature-card:nth-child(2) i { color: #27ae60; }
+        .feature-card:nth-child(3) i { color: #e67e22; }
+        
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            font-size: 0.95rem;
+            background: #f9f9f9;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #1a2a6c);
+            width: 0%;
+            transition: width 0.4s;
+        }
+        
+        .seo-content {
+            margin: 40px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 4px solid #3498db;
+        }
+        
+        .seo-content h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: right;
+        }
+        
+        .seo-content p {
+            color: #5a6c7d;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        
+        .seo-content ul {
+            color: #5a6c7d;
+            line-height: 1.8;
+            margin-right: 20px;
+            text-align: right;
+        }
+        
+        .seo-content li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .upload-area {
+                padding: 30px 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>محول Word إلى PDF</h1>
+            <p>قم بتحويل مستندات DOCX إلى ملفات PDF مع الحفاظ على التنسيق - معالجة 100% على جهازك</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="upload-area" id="drop-area">
+                <input type="file" id="file-input" accept=".docx">
+                <i>📁</i>
+                <h3>قم برفع مستند Word الخاص بك</h3>
+                <p>اسحب وأفلت ملف .docx هنا أو انقر للتصفح</p>
+                <button onclick="document.getElementById('file-input').click()" class="btn">اختر ملف DOCX</button>
+                <p style="font-size: 0.9rem; margin-top: 15px; color: #7f8c8d;">يدعم ملفات .docx فقط (وليس .doc)</p>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            
+            <div class="status" id="status">جاهز لتحويل مستندك</div>
+            
+            <div class="preview-area">
+                <h3><span>🖥️</span> معاينة المستند</h3>
+                <div id="preview">
+                    <p style="text-align: center; color: #7f8c8d; padding: 40px 0; font-style: italic;">
+                        محتوى المستند سيظهر هنا بعد الاختيار
+                    </p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="convert-btn" class="btn btn-convert" disabled>تحويل إلى PDF</button>
+                <button id="download-btn" class="btn btn-download" disabled>تنزيل PDF</button>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i>🔒</i>
+                    <h3>معالجة آمنة</h3>
+                    <p>ملفاتك لا تترك جهازك أبداً. كل التحويل يحدث محلياً في متصفحك.</p>
+                </div>
+                <div class="feature-card">
+                    <i>⚡</i>
+                    <h3>تحويل سريع</h3>
+                    <p>خوارزميات محسنة تعالج المستندات بسرعة مع الحفاظ على التنسيق.</p>
+                </div>
+                <div class="feature-card">
+                    <i>🔄</i>
+                    <h3>محرك تحويل مزدوج</h3>
+                    <p>يستخدم Mammoth.js و docx2html لأقصى توافق مع ملفات DOCX.</p>
+                </div>
+            </div>
+            
+            <div class="seo-content">
+                <h2>محول Word إلى PDF - الأداة الأفضل لتحويل المستندات</h2>
+                <p>تقدم أداة تحويل Word إلى PDF الخاصة بنا حلاً سريعاً وآمناً لتحويل مستندات Microsoft Word إلى تنسيق PDF. سواء كنت طالباً، محترفاً، أو صاحب عمل، فإن أداة التحويل لدينا توفر لك طريقة سهلة وفعالة لتحويل ملفات DOCX إلى PDF مع الحفاظ على التنسيق والنمط الأصلي.</p>
+                
+                <h2>مميزات محول Word إلى PDF:</h2>
+                <ul>
+                    <li><strong>تحويل مجاني بالكامل</strong> - لا توجد تكاليف خفية أو اشتراكات</li>
+                    <li><strong>معالجة محلية</strong> - ملفاتك لا تترك جهازك أبداً، مما يضمن أقصى درجات الخصوصية</li>
+                    <li><strong>دعم اللغة العربية</strong> - يحافظ على تنسيق النصوص العربية وتوجيهها من اليمين لليسار</li>
+                    <li><strong>حفظ التنسيق</strong> - يحتفظ بالخطوط، الجداول، الصور، والتنسيق الأصلي</li>
+                    <li><strong>بدون تسجيل</strong> - لا حاجة لإنشاء حساب أو تسجيل الدخول</li>
+                    <li><strong>متوافق مع جميع الأجهزة</strong> - يعمل على الحواسيب، الأجهزة اللوحية، والهواتف الذكية</li>
+                </ul>
+                
+                <h2>كيفية استخدام محول Word إلى PDF:</h2>
+                <p>عملية التحويل بسيطة للغاية ولا تتطلب سوى ثلاث خطوات:</p>
+                <ol>
+                    <li>انقر على زر "اختر ملف DOCX" أو اسحب ملف Word وأفلته في المنطقة المخصصة</li>
+                    <li>انقر على زر "تحويل إلى PDF" لبدء عملية التحويل</li>
+                    <li>قم بتنزيل ملف PDF الناتج باستخدام زر "تنزيل PDF"</li>
+                </ol>
+                
+                <h2>لماذا تختار محول Word إلى PDF الخاص بنا؟</h2>
+                <p>على عكس العديد من أدوات التحويل الأخرى عبر الإنترنت، فإن أداة التحويل لدينا تعمل بالكامل في متصفحك. هذا يعني أن ملفاتك لا يتم تحميلها إلى أي خادم بعيد، مما يضمن خصوصية وأمان بياناتك. بالإضافة إلى ذلك، فإن أداة التحويل لدينا تدعم بشكل كامل اللغة العربية وتحافظ على تنسيق النصوص العربية بشكل صحيح.</p>
+                
+                <h2>الأسئلة الشائعة:</h2>
+                <p><strong>هل يمكنني تحويل ملفات Word القديمة (.doc)؟</strong><br>
+                حالياً، تدعم أداة التحويل لدينا ملفات DOCX فقط (تنسيق Word 2007 والإصدارات الأحدث). إذا كان لديك ملف .doc، يمكنك أولاً فتحه في Word وحفظه كملف DOCX.</p>
+                
+                <p><strong>هل هناك حد لحجم الملف؟</strong><br>
+                لا يوجد حد صارم لحجم الملف، ولكن قد تواجه الملفات الكبيرة جداً مشاكل في الأداء. نوصي باستخدام ملفات أصغر من 50 ميجابايت للحصول على أفضل تجربة.</p>
+                
+                <p><strong>هل يدعم المحول النصوص العربية؟</strong><br>
+                نعم، يدعم محولنا النصوص العربية بشكل كامل ويحافظ على تنسيقها من اليمين لليسار.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 محول Word إلى PDF | كل المعالجة تتم محلياً في متصفحك | لا يتم تحميل أي بيانات</p>
+        </footer>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const convertBtn = document.getElementById('convert-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const statusText = document.getElementById('status');
+        const previewArea = document.getElementById('preview');
+        const dropArea = document.getElementById('drop-area');
+        const progressBar = document.getElementById('progress');
+        
+        let selectedFile = null;
+        let pdfBlob = null;
+        let conversionMethod = 'mammoth';
+
+        // File selection handler
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelection(e.target.files[0]);
+            }
+        });
+
+        // Drag and drop handlers
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.classList.add('active');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('active');
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const file = dt.files[0];
+            
+            if (file && file.name.endsWith('.docx')) {
+                handleFileSelection(file);
+            } else {
+                showStatus('يرجى اختيار ملف .docx', 'error');
+            }
+        }
+
+        function showStatus(message, type = '') {
+            statusText.textContent = message;
+            statusText.className = 'status';
+            if (type) statusText.classList.add(type);
+        }
+        
+        function updateProgress(percent) {
+            progressBar.style.width = percent + '%';
+        }
+
+        function handleFileSelection(file) {
+            selectedFile = file;
+            showStatus(`تم الاختيار: ${selectedFile.name}`);
+            convertBtn.disabled = false;
+            downloadBtn.disabled = true;
+            pdfBlob = null;
+            
+            // Reset progress
+            updateProgress(0);
+            
+            // Show preview
+            previewArea.innerHTML = '<p style="text-align: center; padding: 30px 0;">جاري تحميل المعاينة...</p>';
+            
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const arrayBuffer = e.target.result;
+                updateProgress(30);
+                
+                // First try Mammoth for conversion
+                try {
+                    const result = await mammoth.convertToHtml({arrayBuffer: arrayBuffer});
+                    previewArea.innerHTML = result.value;
+                    conversionMethod = 'mammoth';
+                    updateProgress(60);
+                    showStatus('تم تحميل المعاينة بنجاح. جاهز للتحويل إلى PDF');
+                } catch (mammothError) {
+                    console.log('Mammoth conversion failed, trying docx2html...', mammothError);
+                    
+                    // If Mammoth fails, try docx2html as a fallback
+                    try {
+                        const htmlContent = await docx2html(arrayBuffer);
+                        previewArea.innerHTML = htmlContent;
+                        conversionMethod = 'docx2html';
+                        updateProgress(60);
+                        showStatus('تم تحميل المعاينة باستخدام المحول الاحتياطي. جاهز للتحويل إلى PDF');
+                    } catch (docxError) {
+                        console.error('Fallback conversion failed:', docxError);
+                        previewArea.innerHTML = `
+                            <div style="text-align: center; padding: 30px; color: #e74c3c;">
+                                <h3>خطأ في تحميل المستند</h3>
+                                <p>تعذر تحميل المستند. يرجى التأكد من أنه ملف .docx صالح.</p>
+                                <p>تفاصيل الخطأ: ${docxError.message || 'تنسيق مستند غير صالح'}</p>
+                            </div>
+                        `;
+                        showStatus('خطأ: فشل تحميل المستند. جرب ملف آخر.', 'error');
+                        convertBtn.disabled = true;
+                    }
+                }
+                updateProgress(100);
+                setTimeout(() => updateProgress(0), 1000);
+            };
+            
+            reader.onerror = function() {
+                showStatus('خطأ في قراءة الملف. يرجى المحاولة مرة أخرى.', 'error');
+                previewArea.innerHTML = `<p style="color: #e74c3c; text-align: center; padding: 30px 0;">خطأ في قراءة الملف: ${reader.error.message}</p>`;
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Conversion handler
+        convertBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            showStatus('جاري التحويل إلى PDF...');
+            convertBtn.disabled = true;
+            downloadBtn.disabled = true;
+            updateProgress(0);
+            
+            try {
+                // Use html2canvas to capture the preview as an image
+                updateProgress(20);
+                const canvas = await html2canvas(previewArea, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    onclone: (clonedDoc) => {
+                        // Improve styling for PDF conversion
+                        const preview = clonedDoc.getElementById('preview');
+                        if (preview) {
+                            preview.style.padding = '40px';
+                            preview.style.fontSize = '14px';
+                            preview.style.direction = 'rtl';
+                            preview.style.textAlign = 'right';
+                        }
+                    }
+                });
+                updateProgress(60);
+                
+                // Convert canvas to image data
+                const imgData = canvas.toDataURL('image/png');
+                
+                // Create PDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                
+                // Calculate image dimensions to fit the page
+                const imgWidth = pageWidth;
+                const imgHeight = (canvas.height * pageWidth) / canvas.width;
+                
+                // Add pages with the image
+                let position = 0;
+                let pageCount = 0;
+                
+                while (position < imgHeight) {
+                    if (pageCount > 0) doc.addPage();
+                    
+                    const remainingHeight = imgHeight - position;
+                    const heightToAdd = Math.min(remainingHeight, pageHeight);
+                    
+                    doc.addImage(imgData, 'PNG', 0, -position, imgWidth, imgHeight);
+                    position += pageHeight;
+                    pageCount++;
+                }
+                
+                updateProgress(90);
+                
+                // Generate PDF blob
+                pdfBlob = doc.output('blob');
+                
+                // Enable download button
+                downloadBtn.disabled = false;
+                showStatus('تم التحويل بنجاح! انقر على "تنزيل PDF"', 'success');
+                updateProgress(100);
+            } catch (error) {
+                console.error(error);
+                showStatus('خطأ: فشل التحويل. ' + error.message, 'error');
+                convertBtn.disabled = false;
+                updateProgress(0);
+            }
+        });
+
+        // Download handler
+        downloadBtn.addEventListener('click', () => {
+            if (!pdfBlob) return;
+            
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            const a = document.createElement('a');
+            a.href = pdfUrl;
+            a.download = selectedFile.name.replace('.docx', '.pdf');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(pdfUrl);
+            
+            showStatus('تم تنزيل PDF بنجاح!', 'success');
+        });
+    </script>
+    
+    <script>
+        // Block right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Block keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Disable F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                alert("تم تعطيل F12!");
+            }
+            // Disable Shift + C
+            else if (e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                alert("تم تعطيل Shift+C!");
+            }
+            // Disable Ctrl + U
+            else if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert("تم تعطيل Ctrl+U!");
+            }
+            // Disable Ctrl + C / Ctrl + V
+            else if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'C' || e.key === 'V')) {
+                e.preventDefault();
+                alert("تم تعطيل النسخ/اللصق!");
+            }
+        });
+
+        // Extra: Disable copy/paste via right-click or edit menu
+        document.addEventListener('copy', (e) => e.preventDefault());
+        document.addEventListener('paste', (e) => e.preventDefault());
+        document.addEventListener('cut', (e) => e.preventDefault());
+    </script>
+
+</body>
+</html>

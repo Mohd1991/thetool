@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+   <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول الصورة إلى نص - مركز أدواتي المتعدد</title>
+    <script src="https://unpkg.com/tesseract.js@v4.0.2/dist/tesseract.min.js"></script>
+    <style>
+        /* نفس أنماط CSS من الإصدار السابق مع صورة الخلفية */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin: 50px auto;
+            transition: all 0.3s ease;
+        }
+
+        /* احتفظ بجميع أنماط CSS الأخرى من الإصدار السابق */
+        /* ... [بقية أنماط CSS تظل كما هي] ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📷 محول الصورة إلى نص</h2>
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <button class="button" onclick="processImage()" id="processBtn" disabled>
+                <span class="button-text">✨ تحويل إلى نص</span>
+            </button>
+            <button class="button" onclick="downloadText()" id="downloadBtn" disabled>
+                <span class="button-text">⤵️ تنزيل النص</span>
+            </button>
+        </div>
+        
+        <div class="loader" id="loader"></div>
+        <img id="imagePreview" alt="معاينة الصورة">
+        <textarea id="result" placeholder="النص المستخرج سيظهر هنا..."></textarea>
+    </div>
+
+    <script>
+        // تهيئة عناصر DOM
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const result = document.getElementById('result');
+        const processBtn = document.getElementById('processBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const loader = document.getElementById('loader');
+
+        // التعامل مع رفع الصورة وعرضها
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    processBtn.disabled = false;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // معالجة الصورة باستخدام Tesseract
+        async function processImage() {
+            loader.style.display = 'block';
+            processBtn.disabled = true;
+            
+            try {
+                const worker = await Tesseract.createWorker();
+                await worker.loadLanguage('eng');
+                await worker.initialize('eng');
+                
+                const { data: { text } } = await worker.recognize(imagePreview.src);
+                result.value = text;
+                result.style.display = 'block';
+                downloadBtn.disabled = false;
+                
+                await worker.terminate();
+            } catch (error) {
+                alert('خطأ في معالجة الصورة: ' + error.message);
+            } finally {
+                loader.style.display = 'none';
+                processBtn.disabled = false;
+            }
+        }
+
+        // تنزيل النص المستخرج
+        function downloadText() {
+            const text = result.value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'extracted-text.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

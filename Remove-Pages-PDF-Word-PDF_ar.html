@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4K058HPDMN');
+    </script>
+
+    <!--Google Adsense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+        crossorigin="anonymous"></script>
+    <!-- Display Ad_Horizontal -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2103216480432659"
+        data-ad-slot="4909484509"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> 
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أدوات PDF مجانية عبر الإنترنت: إزالة صفحات من PDF، تحويل PDF إلى Word، تحويل Word إلى PDF. معاينة قبل التحميل.">
+    <meta name="keywords" content="أدوات PDF, إزالة صفحات PDF, PDF إلى Word, Word إلى PDF, محرر PDF عبر الإنترنت">
+    <title>أداة PDF السحرية | تحرير وتحويل ومعاينة ملفات PDF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.1.0/docx.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* Home Button Styles */
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px; /* Changed from right to left for RTL */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            gap: 8px;
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #b21f1f, #1a2a6c);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .tool-card {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-card i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #1a2a6c;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a2a6c;
+        }
+        
+        .tool-card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .preview-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #1a2a6c;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(26, 42, 108, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            background: rgba(26, 42, 108, 0.1);
+        }
+        
+        .upload-area i {
+            font-size: 4rem;
+            color: #1a2a6c;
+            margin-bottom: 20px;
+        }
+        
+        .preview-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .preview-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-box h3 {
+            margin-bottom: 15px;
+            color: #1a2a6c;
+            text-align: center;
+        }
+        
+        .preview-content {
+            height: 300px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 1.1rem;
+            border: 1px dashed #ccc;
+            overflow: auto;
+            position: relative;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .seo-content {
+            padding: 30px;
+        }
+        
+        .seo-content h2 {
+            text-align: center;
+            color: #1a2a6c;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            font-size: 1rem;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .home-btn {
+                top: 10px;
+                left: 10px; /* Changed from right to left for RTL */
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            header {
+                padding-top: 50px;
+            }
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .page-selection {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .page-selection h4 {
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .page-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .page-btn {
+            padding: 5px 10px;
+            background: #e0e7ff;
+            border: 1px solid #a5b4fc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .page-btn:hover {
+            background: #c7d2fe;
+        }
+        
+        .page-btn.selected {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        
+        .pdf-preview {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .pdf-preview canvas {
+            max-width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 5px;
+        }
+        
+        .conversion-info {
+            padding: 15px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .tool-active {
+            border: 2px solid #1a2a6c !important;
+            background: rgba(26, 42, 108, 0.05) !important;
+        }
+        
+        .download-success {
+            animation: fadeIn 0.5s;
+            text-align: center;
+            margin-top: 20px;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .download-link {
+            color: #1a2a6c;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px dotted #1a2a6c;
+            transition: all 0.2s;
+        }
+        
+        .download-link:hover {
+            color: #b21f1f;
+            border-bottom-style: solid;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Home Button -->
+        <a href="https://thetools.in" class="home-btn">
+            <i class="fas fa-home"></i> الرئيسية
+        </a>
+        
+        <header>
+            <h1>أداة PDF السحرية</h1>
+            <p>قم بتحرير وتحويل ومعاينة ملفات PDF باستخدام أدواتنا المجانية عبر الإنترنت - لا حاجة للتثبيت!</p>
+        </header>
+        
+        <main>
+            <div class="card">
+                <div class="tools-grid">
+                    <div class="tool-card" id="removeTool">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>إزالة صفحات PDF</h3>
+                        <p>احذف الصفحات غير المرغوب فيها من مستندات PDF. اختر صفحات معينة أو نطاقات لإزالتها.</p>
+                        <button class="btn" onclick="selectTool('remove')">استخدم الأداة</button>
+                    </div>
+                    
+                    <div class="tool-card" id="pdfToWordTool">
+                        <i class="fas fa-file-word"></i>
+                        <h3>PDF إلى Word</h3>
+                        <p>حوّل ملفات PDF إلى مستندات Word قابلة للتحرير مع الحفاظ على التنسيق.</p>
+                        <button class="btn" onclick="selectTool('pdf-to-word')">استخدم الأداة</button>
+                    </div>
+                    
+                    <div class="tool-card" id="wordToPdfTool">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>Word إلى PDF</h3>
+                        <p>حوّل مستندات Word إلى ملفات PDF احترافية بنقرة واحدة.</p>
+                        <button class="btn" onclick="selectTool('word-to-pdf')">استخدم الأداة</button>
+                    </div>
+                </div>
+                
+                <div class="preview-section">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3 id="uploadTitle">ارفع ملفك</h3>
+                        <p>انقر أو اسحب وأفلت ملف PDF أو Word هنا</p>
+                        <p class="file-info" id="fileInfo">لم يتم اختيار ملف</p>
+                    </div>
+                    
+                    <div class="page-selection" id="pageSelection">
+                        <h4>اختر الصفحات المراد إزالتها:</h4>
+                        <div class="page-buttons" id="pageButtons">
+                            <!-- سيتم إنشاء أزرار الصفحات هنا -->
+                        </div>
+                    </div>
+                    
+                    <div class="conversion-info" id="conversionInfo">
+                        <p><i class="fas fa-info-circle"></i> يتم تحويل ملفك. سيتم الحفاظ على التنسيق والصور.</p>
+                    </div>
+                    
+                    <div class="preview-container">
+                        <div class="preview-box">
+                            <h3>معاينة الملف الأصلي</h3>
+                            <div class="preview-content" id="originalPreview">
+                                <p>ارفع ملفًا لرؤية المعاينة</p>
+                            </div>
+                        </div>
+                        
+                        <div class="preview-box">
+                            <h3>معاينة الملف المعدل</h3>
+                            <div class="preview-content" id="modifiedPreview">
+                                <p>سيظهر الملف المعالج هنا</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar" id="progressBarContainer">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn" id="processBtn" disabled>معالجة الملف</button>
+                        <button class="btn" id="downloadBtn" disabled>تحميل النتيجة</button>
+                    </div>
+                    
+                    <div class="download-success" id="downloadSuccess" style="display: none;">
+                        <p><i class="fas fa-check-circle"></i> بدأ التحميل بنجاح!</p>
+                        <p>إذا لم يبدأ التحميل تلقائيًا، <a href="#" id="manualDownload" class="download-link">انقر هنا</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card seo-content">
+                <h2>أدوات PDF قوية للجميع</h2>
+                <p>تجعل أدوات PDF المجانية عبر الإنترنت إدارة المستندات بسيطة وفعالة. سواء كنت بحاجة إلى إزالة صفحات من PDF، أو تحويل PDF إلى Word للتحرير، أو إنشاء PDFs من مستندات Word، فإن منصتنا توفر تجربة سلسة مع إمكانيات المعاينة.</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-lock"></i>
+                        <h4>معالجة آمنة</h4>
+                        <p>ملفاتك لا يتم تخزينها على خوادمنا ويتم معالجتها محليًا في متصفحك.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-eye"></i>
+                        <h4>معاينة قبل التحميل</h4>
+                        <p>شاهد بالضبط كيف سيبدو ملفك بعد المعالجة قبل التحميل.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h4>معالجة سريعة</h4>
+                        <p>ضمان الخوارزميات المُحسّنة معالجة سريعة حتى للمستندات الكبيرة.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>متوافق مع الجوال</h4>
+                        <p>يعمل بشكل مثالي على جميع الأجهزة - أجهزة الكمبيوتر المكتبية والأجهزة اللوحية والهواتف الذكية.</p>
+                    </div>
+                </div>
+                
+                <h3>كيفية استخدام أدوات PDF الخاصة بنا</h3>
+                <p>1. <strong>اختر أداة</strong> من الخيارات أعلاه بناءً على احتياجاتك</p>
+                <p>2. <strong>ارفع ملفك</strong> بالنقر أو سحبه إلى منطقة التحميل</p>
+                <p>3. <strong>قم بمعاينة وتخصيص</strong> مستندك باستخدام واجهتنا البديهية</p>
+                <p>4. <strong>معالجة ملفك</strong> بنقرة واحدة</p>
+                <p>5. <strong>قم بتحميل النتيجة</strong> عند اكتمال المعالجة</p>
+                
+                <h3>حالات الاستخدام الشائعة</h3>
+                <p><strong>الطلاب:</strong> إزالة الصفحات غير الضرورية من أوراق البحث، تحويل ملاحظات المحاضرات إلى PDF</p>
+                <p><strong>المحترفون:</strong> تحويل العقود إلى Word للتحرير، إنشاء تقارير PDF من المستندات</p>
+                <p><strong>المسؤولون:</strong> تحضير المستندات بإزالة الصفحات الحساسة قبل المشاركة</p>
+                <p><strong>المؤلفون:</strong> تحويل المخطوطات إلى تنسيق PDF للنشر</p>
+                
+                <h3>الأسئلة الشائعة</h3>
+                <p><strong>س: هل ملفاتي آمنة؟</strong><br>
+                ج: تمامًا! يتم معالجة ملفاتك محليًا في متصفحك ولا يتم تحميلها إلى أي خادم.</p>
+                
+                <p><strong>س: هل هناك حد لحجم الملف؟</strong><br>
+                ج: لا توجد حدود مفروضة، لكن الملفات الكبيرة جدًا قد تستغرق وقتًا أطول للمعالجة اعتمادًا على جهازك.</p>
+                
+                <p><strong>س: هل يمكنني استخدام هذه الأداة على الجوال؟</strong><br>
+                ج: نعم، أدواتنا متجاوبة بالكامل وتعمل على جميع متصفحات الجوال الحديثة.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 أداة PDF السحرية. جميع الحقوق محفوظة.</p>
+            <p>جميع العمليات تتم في متصفحك المحلي. نحن لا نقوم بجمع أو تخزين البيانات أبدًا.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Current tool selection
+        let selectedTool = null;
+        let currentFile = null;
+        let selectedPages = [];
+        let pdfDoc = null;
+        let processedFile = null;
+        
+        // DOM Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const uploadTitle = document.getElementById('uploadTitle');
+        const fileInfo = document.getElementById('fileInfo');
+        const originalPreview = document.getElementById('originalPreview');
+        const modifiedPreview = document.getElementById('modifiedPreview');
+        const processBtn = document.getElementById('processBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const pageSelection = document.getElementById('pageSelection');
+        const pageButtons = document.getElementById('pageButtons');
+        const conversionInfo = document.getElementById('conversionInfo');
+        const progressBar = document.getElementById('progressBar');
+        const downloadSuccess = document.getElementById('downloadSuccess');
+        const manualDownload = document.getElementById('manualDownload');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        
+        // Tool selection handler
+        function selectTool(tool) {
+            selectedTool = tool;
+            
+            // Reset UI elements
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.classList.remove('tool-active');
+            });
+            
+            pageSelection.style.display = 'none';
+            conversionInfo.style.display = 'none';
+            downloadSuccess.style.display = 'none';
+            progressBarContainer.style.display = 'none';
+            currentFile = null;
+            selectedPages = [];
+            pdfDoc = null;
+            processedFile = null;
+            fileInfo.textContent = 'لم يتم اختيار ملف';
+            processBtn.disabled = true;
+            downloadBtn.disabled = true;
+            progressBar.style.width = '0%';
+            
+            // Update preview placeholders
+            originalPreview.innerHTML = '<p>ارفع ملفًا لرؤية المعاينة</p>';
+            modifiedPreview.innerHTML = '<p>سيظهر الملف المعالج هنا</p>';
+            
+            // Activate selected tool
+            if (tool === 'remove') {
+                document.getElementById('removeTool').classList.add('tool-active');
+                uploadTitle.textContent = 'ارفع ملف PDF';
+            } else if (tool === 'pdf-to-word') {
+                document.getElementById('pdfToWordTool').classList.add('tool-active');
+                uploadTitle.textContent = 'ارفع ملف PDF';
+            } else {
+                document.getElementById('wordToPdfTool').classList.add('tool-active');
+                uploadTitle.textContent = 'ارفع مستند Word';
+            }
+        }
+        
+        // File upload handler
+        uploadArea.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            
+            if (selectedTool === 'remove' || selectedTool === 'pdf-to-word') {
+                input.accept = '.pdf';
+            } else {
+                input.accept = '.doc,.docx';
+            }
+            
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (file) {
+                    currentFile = file;
+                    fileInfo.textContent = `تم الاختيار: ${file.name} (${formatFileSize(file.size)})`;
+                    processBtn.disabled = false;
+                    
+                    // Show preview based on file type
+                    if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+                        previewPDF(file, originalPreview);
+                        
+                        // Show page selection for remove tool
+                        if (selectedTool === 'remove') {
+                            pageSelection.style.display = 'block';
+                        } else {
+                            conversionInfo.style.display = 'block';
+                        }
+                    } else {
+                        // Word document preview
+                        originalPreview.innerHTML = `
+                            <div style="text-align:center; padding: 20px;">
+                                <i class="fas fa-file-word" style="font-size: 4rem; color: #2b579a;"></i>
+                                <h4>${file.name}</h4>
+                                <p>مستند Word</p>
+                                <p>${formatFileSize(file.size)}</p>
+                            </div>
+                        `;
+                        conversionInfo.style.display = 'block';
+                    }
+                }
+            };
+            
+            input.click();
+        });
+        
+        // PDF preview function
+        async function previewPDF(file, container) {
+            container.innerHTML = '<p>جاري تحميل المعاينة...</p>';
+            
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                
+                // Clear container and show loading
+                container.innerHTML = '';
+                container.classList.add('pdf-preview');
+                
+                // Create page buttons for remove tool
+                if (selectedTool === 'remove') {
+                    pageButtons.innerHTML = '';
+                    for (let i = 1; i <= pdfDoc.numPages; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = 'page-btn';
+                        pageBtn.textContent = i;
+                        pageBtn.dataset.page = i;
+                        pageBtn.onclick = () => togglePageSelection(i, pageBtn);
+                        pageButtons.appendChild(pageBtn);
+                    }
+                }
+                
+                // Render the first page for preview
+                const page = await pdfDoc.getPage(1);
+                const viewport = page.getViewport({ scale: 1.5 });
+                
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                
+                await page.render(renderContext).promise;
+                container.appendChild(canvas);
+                
+                // Add page info
+                const pageInfo = document.createElement('p');
+                pageInfo.textContent = `المستند: ${file.name} | الصفحات: ${pdfDoc.numPages}`;
+                pageInfo.style.marginTop = '10px';
+                pageInfo.style.fontSize = '0.9rem';
+                container.appendChild(pageInfo);
+                
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                container.innerHTML = `
+                    <div style="text-align:center; color: #e74c3c;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem;"></i>
+                        <p>فشل في تحميل معاينة PDF</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Toggle page selection for removal
+        function togglePageSelection(pageNum, button) {
+            const index = selectedPages.indexOf(pageNum);
+            if (index === -1) {
+                selectedPages.push(pageNum);
+                button.classList.add('selected');
+            } else {
+                selectedPages.splice(index, 1);
+                button.classList.remove('selected');
+            }
+        }
+        
+        // Process file button handler
+        processBtn.addEventListener('click', async () => {
+            if (!currentFile) return;
+            
+            // Show progress bar
+            progressBarContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            
+            // Disable buttons during processing
+            processBtn.disabled = true;
+            downloadBtn.disabled = true;
+            
+            // Show processing animation
+            modifiedPreview.innerHTML = `
+                <div style="text-align:center; padding: 40px;">
+                    <i class="fas fa-cog fa-spin" style="font-size: 3rem; color: #1a2a6c;"></i>
+                    <p>جاري معالجة ملفك...</p>
+                </div>
+            `;
+            
+            // Simulate processing with progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    processFile();
+                }
+            }, 150);
+        });
+        
+        // Process the file based on tool selection
+        async function processFile() {
+            try {
+                if (!currentFile) return;
+                
+                let result;
+                
+                if (selectedTool === 'remove') {
+                    result = await removePagesFromPDF();
+                } else if (selectedTool === 'pdf-to-word') {
+                    result = await convertPDFToWord();
+                } else {
+                    result = await convertWordToPDF();
+                }
+                
+                processedFile = result;
+                showResultPreview();
+                downloadBtn.disabled = false;
+                
+            } catch (error) {
+                console.error('Processing error:', error);
+                modifiedPreview.innerHTML = `
+                    <div style="text-align:center; color: #e74c3c; padding: 20px;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem;"></i>
+                        <h4>خطأ في المعالجة</h4>
+                        <p>فشل في معالجة الملف. يرجى المحاولة مرة أخرى.</p>
+                        <button class="btn" style="margin-top: 15px;" onclick="processBtn.click()">إعادة المعالجة</button>
+                    </div>
+                `;
+                processBtn.disabled = false;
+            }
+        }
+        
+        // Remove pages from PDF
+        async function removePagesFromPDF() {
+            if (!pdfDoc) return;
+            
+            // Create a new PDF document
+            const { PDFDocument } = PDFLib;
+            const newPdfDoc = await PDFDocument.create();
+            
+            // Load the original PDF
+            const originalPdfBytes = await currentFile.arrayBuffer();
+            const originalPdfDoc = await PDFDocument.load(originalPdfBytes);
+            
+            // Copy pages to the new document, skipping selected pages
+            const pages = originalPdfDoc.getPages();
+            for (let i = 0; i < pages.length; i++) {
+                if (!selectedPages.includes(i + 1)) {
+                    const [copiedPage] = await newPdfDoc.copyPages(originalPdfDoc, [i]);
+                    newPdfDoc.addPage(copiedPage);
+                }
+            }
+            
+            // Save the new PDF
+            const pdfBytes = await newPdfDoc.save();
+            
+            return {
+                name: `removed-pages_${currentFile.name}`,
+                type: 'application/pdf',
+                data: pdfBytes
+            };
+        }
+        
+        // Convert PDF to Word (simulated)
+        async function convertPDFToWord() {
+            // In a real application, this would convert the PDF to DOCX
+            // For this demo, we'll create a simple DOCX file with a message
+            
+            const content = `هذا مستند Word محاكى تم تحويله من PDF: ${currentFile.name}.
+            
+في التطبيق الحقيقي، سيكون هذا يحتوي على المحتوى الفعلي من ملف PDF.
+
+تمت المعالجة بواسطة أداة PDF السحرية.`;
+            
+            return {
+                name: currentFile.name.replace('.pdf', '.docx'),
+                type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                data: content
+            };
+        }
+        
+        // Convert Word to PDF
+        async function convertWordToPDF() {
+            // In a real application, this would convert DOCX to PDF
+            // For this demo, we'll create a PDF with the content
+            
+            const { PDFDocument, rgb } = PDFLib;
+            const pdfDoc = await PDFDocument.create();
+            const page = pdfDoc.addPage([600, 400]);
+            
+            const content = `تمت المعالجة بواسطة أداة PDF السحرية\n\nالملف الأصلي: ${currentFile.name}\n\nفي التطبيق الحقيقي، سيكون هذا يحتوي على المحتوى الفعلي من مستند Word.`;
+            
+            page.drawText(content, {
+                x: 50,
+                y: 350,
+                size: 14,
+                color: rgb(0, 0, 0),
+            });
+            
+            const pdfBytes = await pdfDoc.save();
+            
+            return {
+                name: currentFile.name.replace('.docx', '.pdf').replace('.doc', '.pdf'),
+                type: 'application/pdf',
+                data: pdfBytes
+            };
+        }
+        
+        // Show result preview
+        function showResultPreview() {
+            if (!processedFile) return;
+            
+            if (selectedTool === 'remove' || selectedTool === 'word-to-pdf') {
+                // Show PDF preview
+                modifiedPreview.innerHTML = `
+                    <div style="text-align:center; padding: 20px;">
+                        <i class="fas fa-file-pdf" style="font-size: 4rem; color: #27ae60;"></i>
+                        <h4>${processedFile.name}</h4>
+                        <p>جاهز للتحميل</p>
+                        <div style="margin-top: 20px; background: #e8f5e9; padding: 10px; border-radius: 8px;">
+                            <p><i class="fas fa-check-circle"></i> تمت معالجة الملف بنجاح</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Show Word preview
+                modifiedPreview.innerHTML = `
+                    <div style="text-align:center; padding: 20px;">
+                        <i class="fas fa-file-word" style="font-size: 4rem; color: #2b579a;"></i>
+                        <h4>${processedFile.name}</h4>
+                        <p>جاهز للتحميل</p>
+                        <div style="margin-top: 20px; background: #e3f2fd; padding: 10px; border-radius: 8px;">
+                            <p><i class="fas fa-check-circle"></i> تمت معالجة الملف بنجاح</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Download button handler
+        downloadBtn.addEventListener('click', () => {
+            if (!processedFile) return;
+            
+            // Create blob from processed data
+            let blob;
+            if (typeof processedFile.data === 'string') {
+                blob = new Blob([processedFile.data], { type: processedFile.type });
+            } else {
+                blob = new Blob([processedFile.data], { type: processedFile.type });
+            }
+            
+            // Create download link
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = processedFile.name;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            // Show download success message
+            downloadSuccess.style.display = 'block';
+            downloadBtn.disabled = true;
+            
+            // Set manual download link
+            manualDownload.href = url;
+            manualDownload.download = processedFile.name;
+        });
+        
+        // Helper function to format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 بايت';
+            const k = 1024;
+            const sizes = ['بايت', 'كيلوبايت', 'ميجابايت', 'جيجابايت'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Initialize the default tool
+        window.onload = () => {
+            selectTool('remove');
+            progressBarContainer.style.display = 'none';
+            
+            // Add drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.background = 'rgba(26, 42, 108, 0.15)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.background = 'rgba(26, 42, 108, 0.05)';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.background = 'rgba(26, 42, 108, 0.05)';
+                
+                if (e.dataTransfer.files.length) {
+                    const file = e.dataTransfer.files[0];
+                    
+                    // Check file type based on selected tool
+                    if (selectedTool === 'remove' || selectedTool === 'pdf-to-word') {
+                        if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                            alert('يرجى تحميل ملف PDF لهذه الأداة');
+                            return;
+                        }
+                    } else {
+                        if (!file.name.toLowerCase().endsWith('.doc') && !file.name.toLowerCase().endsWith('.docx')) {
+                            alert('يرجى تحميل مستند Word لهذه الأداة');
+                            return;
+                        }
+                    }
+                    
+                    // Simulate file input
+                    currentFile = file;
+                    fileInfo.textContent = `تم الاختيار: ${file.name} (${formatFileSize(file.size)})`;
+                    processBtn.disabled = false;
+                    
+                    // Show preview
+                    if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+                        previewPDF(file, originalPreview);
+                        
+                        if (selectedTool === 'remove') {
+                            pageSelection.style.display = 'block';
+                        } else {
+                            conversionInfo.style.display = 'block';
+                        }
+                    } else {
+                        originalPreview.innerHTML = `
+                            <div style="text-align:center; padding: 20px;">
+                                <i class="fas fa-file-word" style="font-size: 4rem; color: #2b579a;"></i>
+                                <h4>${file.name}</h4>
+                                <p>مستند Word</p>
+                                <p>${formatFileSize(file.size)}</p>
+                            </div>
+                        `;
+                        conversionInfo.style.display = 'block';
+                    }
+                }
+            });
+        };
+    </script>
+<script>
+        // Block right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Block keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Disable F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                alert("F12 معطل!");
+            }
+            // Disable Shift + C
+            else if (e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                alert("Shift+C معطل!");
+            }
+            // Disable Ctrl + U
+            else if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert("Ctrl+U معطل!");
+            }
+            // Disable Ctrl + C / Ctrl + V
+            else if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'C' || e.key === 'V')) {
+                e.preventDefault();
+                alert("النسخ/اللصق معطل!");
+            }
+        });
+
+        // Extra: Disable copy/paste via right-click or edit menu
+        document.addEventListener('copy', (e) => e.preventDefault());
+        document.addEventListener('paste', (e) => e.preventDefault());
+        document.addEventListener('cut', (e) => e.preventDefault());
+    </script>
+
+</body>
+</html>

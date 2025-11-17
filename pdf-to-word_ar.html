@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+	  <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+	
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول الملفات - PDF إلى Word و Word إلى PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .drop-zone {
+            border: 2px dashed #007bff;
+            padding: 50px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .drop-zone:hover {
+            background-color: #f0f8ff;
+            border-color: #0056b3;
+        }
+
+        .conversion-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .cloud-storage {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .cloud-storage button {
+            margin: 0 10px;
+            background-color: #28a745;
+        }
+
+        #file-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>محول الملفات</h1>
+        
+        <div class="conversion-options">
+            <button onclick="setConversionType('pdfToWord')">PDF إلى Word</button>
+            <button onclick="setConversionType('wordToPdf')">Word إلى PDF</button>
+        </div>
+
+        <div class="drop-zone" id="dropZone"
+            ondragover="handleDragOver(event)"
+            ondragleave="handleDragLeave(event)"
+            ondrop="handleDrop(event)">
+            اسحب وأفلت الملفات هنا أو انقر للاختيار
+            <input type="file" id="fileInput" hidden accept=".pdf,.doc,.docx" />
+        </div>
+
+        <div class="cloud-storage">
+            <button onclick="handleCloudStorage('google')">جوجل درايف</button>
+            <button onclick="handleCloudStorage('onedrive')">ون درايف</button>
+        </div>
+
+        <div id="file-list"></div>
+    </div>
+
+    <script>
+        let conversionType = 'pdfToWord';
+
+        function setConversionType(type) {
+            conversionType = type;
+            document.getElementById('fileInput').accept = type === 'pdfToWord' 
+                ? '.pdf' 
+                : '.doc,.docx';
+        }
+
+        // معالجات السحب والإفلات
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.target.style.backgroundColor = '#e3f2fd';
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.target.style.backgroundColor = '';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        }
+
+        // معالج إدخال الملف
+        document.getElementById('dropZone').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // معالجة الملفات
+        function handleFiles(files) {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = '';
+            
+            for (const file of files) {
+                if (validateFile(file)) {
+                    // أضف منطق معالجة الملف هنا
+                    fileList.innerHTML += `<p>${file.name} - جاهز للتحويل</p>`;
+                } else {
+                    alert('نوع الملف المحدد غير صالح');
+                }
+            }
+        }
+
+        function validateFile(file) {
+            const validTypes = conversionType === 'pdfToWord' 
+                ? ['application/pdf']
+                : ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            
+            return validTypes.includes(file.type);
+        }
+
+        // تكامل التخزين السحابي
+        async function handleCloudStorage(provider) {
+            try {
+                // أضف تكامل واجهة برمجة تطبيقات التخزين السحابي هنا
+                if (provider === 'google') {
+                    // تطبيق Google Drive Picker API
+                    alert('تكامل جوجل درايف قريباً');
+                } else if (provider === 'onedrive') {
+                    // تطبيق OneDrive Picker API
+                    alert('تكامل ون درايف قريباً');
+                }
+            } catch (error) {
+                console.error('خطأ في التخزين السحابي:', error);
+            }
+        }
+    </script>
+
+    <!-- إضافة SDKs التخزين السحابي -->
+    <!-- Google Drive Picker API -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    
+    <!-- OneDrive SDK -->
+    <script src="https://js.live.net/v7.2/OneDrive.js"></script>
+    <script>
+// أضف هذا في نهاية قسم السكريبت الحالي
+
+// منع النسخ
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('تم تعطيل نسخ المحتوى على هذا الموقع.');
+});
+
+// منع قائمة النقر بزر الماوس الأيمن
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('تم تعطيل النقر بزر الماوس الأيمن على هذا الموقع.');
+});
+
+// تعطيل تحديد النص
+document.addEventListener('mousedown', function(e) {
+    if (e.detail > 1) { // منع تحديد النص بالنقر المزدوج
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>

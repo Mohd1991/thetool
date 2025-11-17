@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+		<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+	  <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أداة دمج ملفات PDF مع المعاينة - جمع ملفات PDF متعددة عبر الإنترنت</title>
+    <meta name="description" content="أداة مجانية على الإنترنت لدمج عدة ملفات PDF في مستند واحد مع إمكانية المعاينة. لا حاجة للتثبيت. اجمع ملفات PDF بسرعة وأمان مباشرة في متصفحك.">
+    <meta name="keywords" content="دمج PDF, جمع PDF, دمج PDF على الإنترنت, أداة PDF مجانية, أداة جمع PDF, دمج PDF عبر الإنترنت, معاينة PDF">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --success: #06d6a0;
+            --info: #118ab2;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.97);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(30, 30, 40, 0.92) 0%, rgba(40, 40, 60, 0.92) 100%), 
+                        url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--dark);
+            position: relative;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--success));
+            border-radius: 10px 10px 0 0;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--success);
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .tool-container {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px dashed var(--light-gray);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tool-container.active {
+            border-color: var(--success);
+            background: rgba(6, 214, 160, 0.05);
+        }
+        
+        .upload-area {
+            padding: 40px 20px;
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            background: rgba(67, 97, 238, 0.03);
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .upload-area:hover {
+            background: rgba(67, 97, 238, 0.08);
+        }
+        
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .upload-text {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .upload-subtext {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .file-list {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            text-align: right;
+            display: none;
+        }
+        
+        .file-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .file-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .file-icon {
+            color: var(--danger);
+            font-size: 1.2rem;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            color: var(--dark);
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .file-size {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .file-action-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            width: auto;
+            padding: 5px;
+        }
+        
+        .file-action-btn:hover {
+            color: var(--danger);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #611c9c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(114, 9, 183, 0.3);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: var(--white);
+        }
+        
+        .btn-success:hover {
+            background-color: #05c28f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(6, 214, 160, 0.3);
+        }
+        
+        .btn:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            opacity: 0.7;
+        }
+        
+        #status {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(6, 214, 160, 0.1);
+            color: #037c5c;
+            min-height: 24px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .status-error {
+            background: rgba(239, 71, 111, 0.1) !important;
+            color: #c23a5c !important;
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            height: 8px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            margin: 20px auto;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+        
+        .preview-container {
+            display: none;
+            margin-top: 30px;
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 20px;
+            background: var(--white);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .preview-header h3 {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-preview {
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .close-preview:hover {
+            background: #d13558;
+            transform: rotate(90deg);
+        }
+        
+        #pdfPreview {
+            width: 100%;
+            height: 500px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .seo-content {
+            margin: 50px 0 30px;
+            text-align: right;
+        }
+        
+        .seo-content h2 {
+            color: var(--primary);
+            margin: 30px 0 20px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .seo-content h2 i {
+            color: var(--secondary);
+        }
+        
+        .seo-content p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            padding: 30px 25px;
+            background: var(--white);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .feature p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        ol {
+            padding-right: 25px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        
+        li strong {
+            color: var(--primary);
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--white);
+            padding: 25px;
+            width: 100%;
+            background: rgba(33, 37, 41, 0.9);
+            border-radius: 15px;
+            max-width: 1100px;
+            backdrop-filter: blur(5px);
+        }
+        
+        footer p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .shake {
+            animation: shake 0.5s;
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .tool-container {
+                padding: 20px 15px;
+            }
+            
+            .upload-area {
+                padding: 30px 15px;
+            }
+            
+            .upload-icon {
+                font-size: 2.8rem;
+            }
+            
+            .feature {
+                min-width: 100%;
+            }
+            
+            #pdfPreview {
+                height: 350px;
+            }
+            
+            .file-name {
+                max-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-file-pdf"></i> أداة دمج ملفات PDF مع المعاينة</h1>
+        <p class="subtitle">اجمع عدة ملفات PDF في مستند واحد مع معاينة فورية ومعالجة محلية آمنة</p>
+        
+        <div class="tool-container" id="toolContainer">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <p class="upload-text">اسحب وأفلت ملفات PDF هنا</p>
+                <p class="upload-subtext">أو انقر لاستعراض ملفاتك</p>
+                <input type="file" id="pdfFiles" accept=".pdf" multiple style="display: none;">
+            </div>
+            
+            <div class="file-list" id="fileList">
+                <div class="file-list-header">
+                    <h3><i class="fas fa-list"></i> الملفات المحددة</h3>
+                    <span id="fileCount">0 ملفات</span>
+                </div>
+                <div id="fileItems">
+                    <!-- سيتم إضافة عناصر الملفات هنا ديناميكيًا -->
+                </div>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="mergePDFs()">
+                    <i class="fas fa-object-group"></i> دمج ملفات PDF
+                </button>
+                <button class="btn btn-secondary" id="previewButton" onclick="previewMergedPDF()" disabled>
+                    <i class="fas fa-eye"></i> معاينة PDF المدمج
+                </button>
+                <button class="btn btn-success" id="downloadButton" onclick="downloadMergedPDF()" disabled>
+                    <i class="fas fa-download"></i> تحميل PDF المدمج
+                </button>
+            </div>
+            
+            <div id="status">
+                <i class="fas fa-info-circle"></i>
+                <span>حدد ملفات PDF لبدء الدمج</span>
+            </div>
+            
+            <div class="preview-container" id="previewContainer">
+                <div class="preview-header">
+                    <h3><i class="fas fa-file-pdf"></i> معاينة PDF</h3>
+                    <button class="close-preview" onclick="closePreview()">×</button>
+                </div>
+                <iframe id="pdfPreview"></iframe>
+            </div>
+        </div>
+
+        <div class="seo-content">
+            <h2><i class="fas fa-lock"></i> أداة مجانية لدمج ملفات PDF مع المعاينة</h2>
+            <p>تتيح لك أداة دمج PDF المتقدمة لدينا دمج عدة مستندات PDF وصور في ملف PDF واحد. تعمل هذه الأداة المجانية عبر الإنترنت مباشرة في متصفح الويب الخاص بك، لذلك لا تحتاج إلى تثبيت أي برنامج أو تحميل ملفاتك إلى خادم. تتم معالجة ملفاتك محليًا على جهاز الكمبيوتر الخاص بك لضمان أقصى قدر من الخصوصية والأمان.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>معالجة آمنة</h3>
+                    <p>ملفاتك لا تترك جهازك أبدًا. تتم جميع المعالجة محليًا في متصفحك لضمان أقصى درجات الأمان.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h3>معاينة حية</h3>
+                    <p>اعرض ملف PDF المدمج قبل التحميل للتأكد من أنه يبدو بالضبط كما تريد مع معاينة تفاعلية.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>سريع وفعال</h3>
+                    <p>ادمج ملفات PDF بسرعة باستخدام خوارزمية المعالجة المحسنة، حتى مع الملفات الكبيرة.</p>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-question-circle"></i> كيفية دمج ملفات PDF</h2>
+            <ol>
+                <li><strong>حدد الملفات</strong> - انقر على "اختر الملفات" أو اسحب وأفلت ملفات PDF في منطقة التحميل</li>
+                <li><strong>رتب الترتيب</strong> - راجع الملفات وأعد ترتيبها إذا لزم الأمر باستخدام السحب والإفلات</li>
+                <li><strong>ادمج</strong> - انقر على زر "دمج ملفات PDF" لدمج ملفاتك</li>
+                <li><strong>معاينة</strong> - راجع ملف PDF المدمج باستخدام ميزة المعاينة</li>
+                <li><strong>تحميل</strong> - قم بتنزيل ملف PDF المدمج النهائي عندما تكون راضيًا</li>
+            </ol>
+            
+            <h2><i class="fas fa-star"></i> لماذا تستخدم أداة دمج PDF الخاصة بنا؟</h2>
+            <p>أداتنا مثالية لدمج التقارير والفواتير والمستندات الممسوحة ضوئيًا أو أي ملفات PDF أخرى. سواء كنت طالبًا يجمع أوراق البحث، أو محترفًا ينظم المستندات، أو أي شخص يحتاج إلى توحيد عدة ملفات PDF، فإن أداة الدمج لدينا توفر حلاً بسيطًا دون فقدان الجودة.</p>
+            
+            <p><strong>تعمل على جميع المتصفحات الحديثة</strong> بما في ذلك Chrome وFirefox وSafari وEdge. لا حاجة للتثبيت - يمكنك الوصول إلى أداة دمج PDF الخاصة بنا من أي جهاز مع متصفح ويب.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 أدوات PDF. جميع الحقوق محفوظة. | خصوصيتك محمية - نحن لا نخزن أو نصل إلى ملفاتك أبدًا.</p>
+    </footer>
+
+    <script src="https://unpkg.com/pdf-lib@1.17.0/dist/pdf-lib.min.js"></script>
+    <script>
+        let mergedPdfBytes = null; // تخزين بايتات PDF المدمج
+        let previewUrl = null; // تخزين رابط المعاينة
+        let filesArray = []; // تخزين كائنات الملفات للمعالجة
+
+        // التهيئة عند تحميل DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('pdfFiles');
+            const uploadArea = document.getElementById('uploadArea');
+            const toolContainer = document.getElementById('toolContainer');
+            const status = document.getElementById('status');
+            
+            // النقر على منطقة التحميل لتفعيل إدخال الملف
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            // التعامل مع اختيار الملف
+            fileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    handleFiles(this.files);
+                }
+            });
+            
+            // وظيفة السحب والإفلات
+            toolContainer.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toolContainer.classList.add('active');
+            });
+            
+            toolContainer.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toolContainer.classList.remove('active');
+            });
+            
+            toolContainer.addEventListener('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toolContainer.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    handleFiles(e.dataTransfer.files);
+                }
+            });
+            
+            // إغلاق المعاينة عند النقر خارجها
+            window.addEventListener('click', function(e) {
+                const previewContainer = document.getElementById('previewContainer');
+                if (e.target === previewContainer) {
+                    closePreview();
+                }
+            });
+        });
+        
+        // التعامل مع الملفات المحددة
+        function handleFiles(files) {
+            const status = document.getElementById('status');
+            const fileList = document.getElementById('fileList');
+            const fileItems = document.getElementById('fileItems');
+            const fileCount = document.getElementById('fileCount');
+            
+            // مسح الملفات السابقة إذا لزم الأمر
+            filesArray = [];
+            fileItems.innerHTML = '';
+            
+            // معالجة كل ملف
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                
+                // التحقق مما إذا كان الملف PDF
+                if (file.type !== 'application/pdf') {
+                    status.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>يرجى اختيار ملفات PDF فقط</span>';
+                    status.classList.add('status-error');
+                    setTimeout(() => {
+                        status.classList.remove('status-error');
+                        status.innerHTML = '<i class="fas fa-info-circle"></i> <span>حدد ملفات PDF لبدء الدمج</span>';
+                    }, 3000);
+                    continue;
+                }
+                
+                filesArray.push(file);
+                
+                // إنشاء عنصر ملف
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.draggable = true;
+                fileItem.dataset.index = i;
+                
+                // تنسيق حجم الملف
+                const fileSize = formatFileSize(file.size);
+                
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div>
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${fileSize}</div>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="file-action-btn" onclick="removeFile(${i})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                fileItems.appendChild(fileItem);
+            }
+            
+            // عرض قائمة الملفات إذا كان لدينا ملفات
+            if (filesArray.length > 0) {
+                fileList.style.display = 'block';
+                fileCount.textContent = `${filesArray.length} ملف${filesArray.length > 1 ? 'ات' : ''}`;
+                status.innerHTML = `<i class="fas fa-check-circle"></i> <span>${filesArray.length} ملف PDF ${filesArray.length > 1 ? 'ات' : ''} محددة</span>`;
+                
+                // تمكين الترتيب بالسحب والإفلات
+                initDragAndDrop();
+            } else {
+                fileList.style.display = 'none';
+                status.innerHTML = '<i class="fas fa-info-circle"></i> <span>حدد ملفات PDF لبدء الدمج</span>';
+            }
+            
+            // إعادة تعيين حالة الدمج
+            mergedPdfBytes = null;
+            document.getElementById('previewButton').disabled = true;
+            document.getElementById('downloadButton').disabled = true;
+        }
+        
+        // تنسيق حجم الملف إلى تنسيق مقروء
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 بايت';
+            const k = 1024;
+            const sizes = ['بايت', 'كيلوبايت', 'ميجابايت', 'جيجابايت'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // إزالة ملف من القائمة
+        function removeFile(index) {
+            filesArray.splice(index, 1);
+            
+            // تحديث قائمة الملفات
+            const fileInput = document.getElementById('pdfFiles');
+            const dataTransfer = new DataTransfer();
+            
+            filesArray.forEach(file => {
+                dataTransfer.items.add(file);
+            });
+            
+            fileInput.files = dataTransfer.files;
+            handleFiles(fileInput.files);
+        }
+        
+        // تهيئة السحب والإفلات لإعادة ترتيب الملفات
+        function initDragAndDrop() {
+            const fileItems = document.getElementById('fileItems');
+            let draggedItem = null;
+            
+            // إضافة مستمعي الأحداث لجميع عناصر الملفات
+            const items = fileItems.querySelectorAll('.file-item');
+            items.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedItem = this;
+                    setTimeout(() => this.style.opacity = '0.5', 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                    items.forEach(i => i.classList.remove('drag-over'));
+                });
+                
+                item.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                item.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+                
+                item.addEventListener('dragleave', function() {
+                    this.classList.remove('drag-over');
+                });
+                
+                item.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    
+                    if (draggedItem !== this) {
+                        // الحصول على فهارس العناصر المسحوبة والهدف
+                        const fromIndex = parseInt(draggedItem.dataset.index);
+                        const toIndex = parseInt(this.dataset.index);
+                        
+                        // إعادة ترتيب مصفوفة الملفات
+                        const movedFile = filesArray[fromIndex];
+                        filesArray.splice(fromIndex, 1);
+                        filesArray.splice(toIndex, 0, movedFile);
+                        
+                        // تحديث قائمة الملفات
+                        const fileInput = document.getElementById('pdfFiles');
+                        const dataTransfer = new DataTransfer();
+                        
+                        filesArray.forEach(file => {
+                            dataTransfer.items.add(file);
+                        });
+                        
+                        fileInput.files = dataTransfer.files;
+                        handleFiles(fileInput.files);
+                    }
+                });
+            });
+        }
+        
+        // دمج ملفات PDF
+        async function mergePDFs() {
+            const status = document.getElementById('status');
+            const downloadButton = document.getElementById('downloadButton');
+            const previewButton = document.getElementById('previewButton');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+
+            if (filesArray.length === 0) {
+                status.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>يرجى اختيار ملف PDF واحد على الأقل</span>';
+                status.classList.add('status-error');
+                setTimeout(() => {
+                    status.classList.remove('status-error');
+                    status.innerHTML = '<i class="fas fa-info-circle"></i> <span>حدد ملفات PDF لبدء الدمج</span>';
+                }, 3000);
+                return;
+            }
+
+            status.innerHTML = '<i class="fas fa-cog fa-spin"></i> <span>جاري دمج ملفات PDF...</span>';
+            downloadButton.disabled = true;
+            previewButton.disabled = true;
+            
+            // عرض شريط التقدم
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+
+            try {
+                const mergedPdf = await PDFLib.PDFDocument.create();
+                const totalFiles = filesArray.length;
+                
+                for (let i = 0; i < totalFiles; i++) {
+                    const file = filesArray[i];
+                    
+                    // تحديث التقدم
+                    progressBar.style.width = `${(i / totalFiles) * 100}%`;
+                    
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                
+                // إكمال التقدم
+                progressBar.style.width = '100%';
+                
+                mergedPdfBytes = await mergedPdf.save(); // تخزين بايتات PDF المدمج
+                
+                // عرض رسالة النجاح للحظة قبل المعاينة التلقائية
+                status.innerHTML = '<i class="fas fa-check-circle"></i> <span>تم دمج ملفات PDF بنجاح! جاري تحضير المعاينة...</span>';
+                
+                // الانتظار للحظة لرؤية المستخدم لرسالة النجاح
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                downloadButton.disabled = false;
+                previewButton.disabled = false;
+                
+                // عرض المعاينة تلقائيًا بعد الدمج
+                previewMergedPDF();
+                
+                // إخفاء شريط التقدم بعد تأخير
+                setTimeout(() => {
+                    progressContainer.style.display = 'none';
+                }, 1000);
+            } catch (error) {
+                console.error('خطأ في دمج ملفات PDF:', error);
+                status.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>خطأ في دمج ملفات PDF. يرجى المحاولة مرة أخرى.</span>';
+                status.classList.add('status-error');
+                progressContainer.style.display = 'none';
+            }
+        }
+
+        // معاينة PDF المدمج
+        function previewMergedPDF() {
+            const status = document.getElementById('status');
+            const previewContainer = document.getElementById('previewContainer');
+            const pdfPreview = document.getElementById('pdfPreview');
+
+            if (!mergedPdfBytes) {
+                status.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>لا يوجد PDF مدمج متاح. يرجى دمج ملفات PDF أولاً.</span>';
+                status.classList.add('status-error');
+                return;
+            }
+
+            // تنظيف رابط المعاينة السابق إذا كان موجودًا
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+
+            // إنشاء blob من بايتات PDF المدمج
+            const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+            previewUrl = URL.createObjectURL(blob);
+            
+            // تعيين مصدر iframe إلى رابط blob
+            pdfPreview.src = previewUrl;
+            
+            // عرض حاوية المعاينة
+            previewContainer.style.display = 'block';
+            
+            // التمرير إلى المعاينة لتحسين تجربة المستخدم
+            previewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            status.innerHTML = '<i class="fas fa-check-circle"></i> <span>تم إنشاء معاينة PDF.</span>';
+        }
+
+        // إغلاق المعاينة
+        function closePreview() {
+            const previewContainer = document.getElementById('previewContainer');
+            previewContainer.style.display = 'none';
+        }
+
+        // تحميل PDF المدمج
+        function downloadMergedPDF() {
+            const status = document.getElementById('status');
+
+            if (!mergedPdfBytes) {
+                status.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>لا يوجد PDF مدمج متاح. يرجى دمج ملفات PDF أولاً.</span>';
+                status.classList.add('status-error');
+                return;
+            }
+
+            const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'المستند_المدمج_' + new Date().toISOString().slice(0, 10) + '.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            status.innerHTML = '<i class="fas fa-check-circle"></i> <span>تم تحميل PDF بنجاح!</span>';
+        }
+    </script>
+	<script>
+        // منع قائمة النقر بزر الماوس الأيمن
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // منع اختصارات لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            // تعطيل F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                alert("تم تعطيل F12!");
+            }
+            // تعطيل Shift + C
+            else if (e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                alert("تم تعطيل Shift+C!");
+            }
+            // تعطيل Ctrl + U
+            else if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                alert("تم تعطيل Ctrl+U!");
+            }
+            // تعطيل Ctrl + C / Ctrl + V
+            else if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'C' || e.key === 'V')) {
+                e.preventDefault();
+                alert("تم تعطيل النسخ/اللصق!");
+            }
+        });
+
+        // إضافي: تعطيل النسخ/اللصق عبر النقر بزر الماوس الأيمن أو قائمة التحرير
+        document.addEventListener('copy', (e) => e.preventDefault());
+        document.addEventListener('paste', (e) => e.preventDefault());
+        document.addEventListener('cut', (e) => e.preventDefault());
+    </script>
+</body>
+</html>

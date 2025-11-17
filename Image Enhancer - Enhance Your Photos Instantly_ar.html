@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+   <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> عزز صورك على الفور </title>
+    <meta name="description" content="أداة مجانية على الإنترنت لتحسين الصور. حسّن جودة الصورة، اضبط السطوع والتباين والحدة. حمّل الصور المحسنة فورًا.">
+    <meta name="keywords" content="محسن الصور، تحسين الصور، تحسين جودة الصورة، محرر الصور عبر الإنترنت، تحسين الصور المجاني">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to left, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e0e0e0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .upload-section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(30, 30, 40, 0.85);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .preview-section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(30, 30, 40, 0.85);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #4facfe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+        }
+
+        .upload-area {
+            border: 3px dashed #4facfe;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-area:hover {
+            background: rgba(79, 172, 254, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .upload-area i {
+            font-size: 4rem;
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+
+        .upload-area h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-area p {
+            color: #aaa;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .controls {
+            margin-top: 25px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #333;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #4facfe;
+            cursor: pointer;
+        }
+
+        .value-display {
+            min-width: 40px;
+            text-align: center;
+            background: rgba(79, 172, 254, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #777;
+        }
+
+        .placeholder i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #4facfe;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .enhance-btn {
+            background: linear-gradient(to left, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .download-btn {
+            background: linear-gradient(to left, #00cdac, #02aab0);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .features {
+            background: rgba(30, 30, 40, 0.85);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #4facfe;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #4facfe;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+
+        /* SEO Content */
+        .seo-content {
+            background: rgba(30, 30, 40, 0.85);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .seo-content h2 {
+            color: #4facfe;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .seo-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-magic"></i> محسن الصور المحترف</h1>
+            <p>حوّل صورك العادية إلى تحف استثنائية باستخدام أداة تحسين الصور المجانية لدينا</p>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="upload-section">
+                <h2 class="section-title"><i class="fas fa-cloud-upload-alt"></i> رفع الصورة</h2>
+                <div class="upload-area" id="dropArea">
+                    <i class="fas fa-file-image"></i>
+                    <h3>اسحب وأفلت صورتك</h3>
+                    <p>أو انقر لاستعراض الملفات</p>
+                    <p>الأنظمة المدعومة: JPG, PNG, WebP (الحد الأقصى 5 ميجابايت)</p>
+                    <input type="file" id="fileInput" accept="image/*">
+                </div>
+
+                <div class="controls">
+                    <h2 class="section-title"><i class="fas fa-sliders-h"></i> عناصر التحكم بالتحسين</h2>
+                    
+                    <div class="control-group">
+                        <label for="brightness">السطوع</label>
+                        <div class="slider-container">
+                            <input type="range" id="brightness" min="0" max="200" value="100">
+                            <span class="value-display" id="brightnessValue">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="contrast">التباين</label>
+                        <div class="slider-container">
+                            <input type="range" id="contrast" min="0" max="200" value="100">
+                            <span class="value-display" id="contrastValue">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="saturation">التشبع</label>
+                        <div class="slider-container">
+                            <input type="range" id="saturation" min="0" max="200" value="100">
+                            <span class="value-display" id="saturationValue">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="sharpness">الحدة</label>
+                        <div class="slider-container">
+                            <input type="range" id="sharpness" min="0" max="200" value="100">
+                            <span class="value-display" id="sharpnessValue">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h2 class="section-title"><i class="fas fa-eye"></i> المعاينة</h2>
+                <div class="preview-container">
+                    <div class="preview-box">
+                        <h3>الصورة الأصلية</h3>
+                        <div class="image-box">
+                            <div class="placeholder" id="originalPlaceholder">
+                                <i class="fas fa-image"></i>
+                                <p>لم يتم رفع صورة</p>
+                            </div>
+                            <img id="originalPreview" alt="معاينة الصورة الأصلية">
+                        </div>
+                    </div>
+                    
+                    <div class="preview-box">
+                        <h3>الصورة المحسنة</h3>
+                        <div class="image-box">
+                            <div class="placeholder" id="enhancedPlaceholder">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                                <p>ستظهر الصورة المحسنة هنا</p>
+                            </div>
+                            <img id="enhancedPreview" alt="معاينة الصورة المحسنة">
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button id="enhanceBtn" class="enhance-btn" disabled>
+                            <i class="fas fa-bolt"></i> حسّن الصورة
+                        </button>
+                        <button id="downloadBtn" class="download-btn" disabled>
+                            <i class="fas fa-download"></i> تحميل
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم محتوى تحسين محركات البحث -->
+        <div class="seo-content">
+            <h2>أداة مجانية لتحسين الصور عبر الإنترنت</h2>
+            <p>مرحبًا بك في محسن الصور المحترف - الحل الأمثل لك لتحسين جودة الصور دون الحاجة إلى برامج باهظة الثمن. تساعدك أداتنا المجانية عبر الإنترنت في تحويل الصور الباهتة منخفضة الجودة إلى صور حيوية ذات مظهر احترافي ببضع نقرات فقط.</p>
+            
+            <p>سواء كنت مصورًا محترفًا، أو هاويًا لوسائل التواصل الاجتماعي، أو فقط تبحث عن تحسين صورك الشخصية، فإن محسن الصور لدينا يوفر أدوات قوية وسهلة الاستخدام لإبراز أفضل ما في صورك. اضبط السطوع والتباين والتشبع والحدة باستخدام أشرطة التمرير البديهية وشاهد النتائج في الوقت الفعلي.</p>
+            
+            <p>تعمل منصتنا مباشرة في متصفحك، مما يضمن معالجة سريعة دون تحميل صورك إلى خوادم خارجية. هذا يعني أن صورك تبقى خاصة وآمنة خلال عملية التحسين.</p>
+            
+            <p>الفوائد الرئيسية لاستخدام محسن الصور المحترف:</p>
+            <ul>
+                <li>مجاني تمامًا دون الحاجة للتسجيل</li>
+                <li>يعمل على جميع الأجهزة - سطح المكتب، اللوحي، والجوال</li>
+                <li>لا توجد علامات مائية على الصور المحسنة</li>
+                <li>يحافظ على الجودة الأصلية للصورة</li>
+                <li>تحميل فوري للنتائج</li>
+            </ul>
+            
+            <p>حسّن صورك اليوم وشاهد الفرق الذي يمكن أن يحدثه معالجة الصور على المستوى الاحترافي!</p>
+        </div>
+
+        <div class="features">
+            <h2>لماذا تختار محسن الصور لدينا؟</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>معالجة فورية</h3>
+                    <p>حسّن صورك في الوقت الفعلي دون انتظار</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>الخصوصية أولاً</h3>
+                    <p>صورك لا تترك جهازك أبدًا</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>متجاوب بالكامل</h3>
+                    <p>يعمل بشكل مثالي على جميع الأجهزة</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>تحميل مجاني</h3>
+                    <p>احصل على الصور المحسنة دون علامات مائية</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 محسن الصور المحترف </p>
+            <p>جميع عمليات معالجة الصور تتم محليًا في متصفحك - صورك لا يتم رفعها إلى أي خادم</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // عناصر DOM
+            const fileInput = document.getElementById('fileInput');
+            const dropArea = document.getElementById('dropArea');
+            const originalPreview = document.getElementById('originalPreview');
+            const enhancedPreview = document.getElementById('enhancedPreview');
+            const originalPlaceholder = document.getElementById('originalPlaceholder');
+            const enhancedPlaceholder = document.getElementById('enhancedPlaceholder');
+            const enhanceBtn = document.getElementById('enhanceBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // عناصر التحكم بالتحسين
+            const brightnessSlider = document.getElementById('brightness');
+            const contrastSlider = document.getElementById('contrast');
+            const saturationSlider = document.getElementById('saturation');
+            const sharpnessSlider = document.getElementById('sharpness');
+            const brightnessValue = document.getElementById('brightnessValue');
+            const contrastValue = document.getElementById('contrastValue');
+            const saturationValue = document.getElementById('saturationValue');
+            const sharpnessValue = document.getElementById('sharpnessValue');
+            
+            let originalImage = null;
+            let enhancedImage = null;
+            
+            // مستمعو الأحداث
+            dropArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    
+                    // التحقق من نوع الملف
+                    if (!file.type.match('image.*')) {
+                        alert('الرجاء اختيار ملف صورة (JPG, PNG, WebP)');
+                        return;
+                    }
+                    
+                    // التحقق من حجم الملف (حد 5 ميجابايت)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('حجم الملف يتجاوز الحد المسموح 5 ميجابايت');
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        originalImage = new Image();
+                        originalImage.onload = function() {
+                            originalPreview.src = event.target.result;
+                            originalPreview.style.display = 'block';
+                            originalPlaceholder.style.display = 'none';
+                            enhanceBtn.disabled = false;
+                        };
+                        originalImage.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // وظيفة السحب والإفلات
+            dropArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.background = 'rgba(79, 172, 254, 0.2)';
+            });
+            
+            dropArea.addEventListener('dragleave', function() {
+                this.style.background = '';
+            });
+            
+            dropArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.background = '';
+                
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change', { bubbles: true });
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // تحديث عروض قيم أشرطة التمرير
+            brightnessSlider.addEventListener('input', function() {
+                brightnessValue.textContent = this.value + '%';
+            });
+            
+            contrastSlider.addEventListener('input', function() {
+                contrastValue.textContent = this.value + '%';
+            });
+            
+            saturationSlider.addEventListener('input', function() {
+                saturationValue.textContent = this.value + '%';
+            });
+            
+            sharpnessSlider.addEventListener('input', function() {
+                sharpnessValue.textContent = this.value + '%';
+            });
+            
+            // زر تحسين الصورة
+            enhanceBtn.addEventListener('click', function() {
+                if (!originalImage) return;
+                
+                // عرض حالة التحميل
+                enhanceBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري المعالجة...';
+                enhanceBtn.disabled = true;
+                
+                // محاكاة تأخير المعالجة
+                setTimeout(() => {
+                    // إنشاء لوحة رسم للتحسين
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // تعيين أبعاد اللوحة لتطابق الصورة
+                    canvas.width = originalImage.width;
+                    canvas.height = originalImage.height;
+                    
+                    // رسم الصورة الأصلية
+                    ctx.drawImage(originalImage, 0, 0);
+                    
+                    // تطبيق التحسينات
+                    const brightness = parseInt(brightnessSlider.value) / 100;
+                    const contrast = parseInt(contrastSlider.value) / 100;
+                    const saturation = parseInt(saturationSlider.value) / 100;
+                    const sharpness = parseInt(sharpnessSlider.value) / 100;
+                    
+                    // تطبيق الفلاتر
+                    applyImageFilters(ctx, canvas.width, canvas.height, brightness, contrast, saturation, sharpness);
+                    
+                    // الحصول على بيانات الصورة المحسنة
+                    enhancedPreview.src = canvas.toDataURL('image/jpeg', 0.9);
+                    enhancedPreview.style.display = 'block';
+                    enhancedPlaceholder.style.display = 'none';
+                    
+                    // تخزين الصورة المحسنة للتحميل
+                    enhancedImage = canvas.toDataURL('image/jpeg', 0.9);
+                    
+                    // تمكين زر التحميل
+                    downloadBtn.disabled = false;
+                    
+                    // إعادة تعيين الزر
+                    enhanceBtn.innerHTML = '<i class="fas fa-bolt"></i> حسّن الصورة';
+                    enhanceBtn.disabled = false;
+                }, 1000);
+            });
+            
+            // زر التحميل
+            downloadBtn.addEventListener('click', function() {
+                if (!enhancedImage) return;
+                
+                const link = document.createElement('a');
+                link.download = 'enhanced-image.jpg';
+                link.href = enhancedImage;
+                link.click();
+            });
+            
+            // تطبيق فلاتر الصورة على لوحة الرسم
+            function applyImageFilters(ctx, width, height, brightness, contrast, saturation, sharpness) {
+                // الحصول على بيانات الصورة
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const data = imageData.data;
+                
+                // تطبيق السطوع والتباين
+                const brightnessFactor = brightness * 255 - 128;
+                const contrastFactor = contrast * 259;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    // السطوع
+                    data[i] = Math.min(255, Math.max(0, data[i] + brightnessFactor));
+                    data[i+1] = Math.min(255, Math.max(0, data[i+1] + brightnessFactor));
+                    data[i+2] = Math.min(255, Math.max(0, data[i+2] + brightnessFactor));
+                    
+                    // التباين
+                    data[i] = Math.min(255, Math.max(0, ((data[i] - 128) * contrastFactor + 128)));
+                    data[i+1] = Math.min(255, Math.max(0, ((data[i+1] - 128) * contrastFactor + 128)));
+                    data[i+2] = Math.min(255, Math.max(0, ((data[i+2] - 128) * contrastFactor + 128)));
+                }
+                
+                // تطبيق التشبع
+                if (saturation !== 1) {
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i];
+                        const g = data[i+1];
+                        const b = data[i+2];
+                        
+                        const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b;
+                        
+                        data[i] = Math.min(255, gray + saturation * (r - gray));
+                        data[i+1] = Math.min(255, gray + saturation * (g - gray));
+                        data[i+2] = Math.min(255, gray + saturation * (b - gray));
+                    }
+                }
+                
+                // إعادة البيانات المعدلة
+                ctx.putImageData(imageData, 0, 0);
+                
+                // تطبيق الحدة (قناع غير حاد مبسط)
+                if (sharpness > 1) {
+                    ctx.filter = `blur(${1/sharpness}px)`;
+                    ctx.globalCompositeOperation = 'overlay';
+                    ctx.globalAlpha = 0.5;
+                    ctx.drawImage(canvas, 0, 0);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

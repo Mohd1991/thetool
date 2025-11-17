@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4K058HPDMN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4K058HPDMN');
+</script>
+
+   <!--Google Adsense-->
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2103216480432659"
+     crossorigin="anonymous"></script>
+<!-- Display Ad_Horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2103216480432659"
+     data-ad-slot="4909484509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حوّل عدة صور JPG إلى ملف PDF محسن بحجم أصغر مع الحفاظ على الجودة. أداة مجانية عبر الإنترنت بدون فقدان في الجودة." />
+  <title>محول JPG إلى PDF محسن | حجم ملف أصغر</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: "Cairo", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.9);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: right;
+    }
+
+    h1, h2, h3 { color: #2c3e50; }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+      justify-content: flex-start;
+    }
+
+    .preview-item {
+      position: relative;
+    }
+
+    .preview-item img {
+      height: 100px;
+      width: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .upload-area {
+      border: 2px dashed #3498db;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .upload-area:hover {
+      background: #f0f8ff;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+
+    .quality-options {
+      margin: 15px 0;
+    }
+
+    .file-info {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .optimization-tips {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background-color: #2c3e50;
+      color: white;
+      border-radius: 0 0 8px 8px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+    }
+
+    .footer-links a {
+      color: #3498db;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>محول صور JPG متعددة إلى PDF</h1>
+    <p style="text-align: center;">حوّل عدة صور JPG إلى ملف PDF بحجم أصغر مع الحفاظ على جودة العرض</p>
+
+    <div class="upload-area" id="uploadArea">
+      <p>اسحب وأفلت صور JPG هنا أو اضغط لاختيار الملفات</p>
+      <input type="file" id="fileInput" accept="image/jpeg" multiple style="display: none;" />
+    </div>
+
+    <div class="file-info" id="fileInfo">لم يتم اختيار أي ملفات</div>
+
+    <div class="quality-options">
+      <label for="quality">جودة الإخراج:</label>
+      <select id="quality">
+        <option value="0.9">عالية (موصى بها)</option>
+        <option value="0.7">متوسطة</option>
+        <option value="0.5">منخفضة</option>
+      </select>
+      <span id="qualityInfo">(توازن بين الجودة وحجم الملف)</span>
+    </div>
+
+    <div class="preview-container" id="preview"></div>
+
+    <div style="text-align: center;">
+      <button id="convertBtn" onclick="convertToPDF()" disabled>تحويل إلى PDF محسن</button>
+    </div>
+
+    <div class="optimization-tips">
+      <h3>نصائح لتقليل حجم الملف:</h3>
+      <ul>
+        <li>استخدم الجودة العالية للمستندات المهمة</li>
+        <li>استخدم الجودة المتوسطة للمشاركة العامة</li>
+        <li>للاستخدام عبر الإنترنت، الجودة المنخفضة قد تكون كافية</li>
+        <li>سيتم تحسين كل صورة تلقائياً</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>محول JPG إلى PDF محسن</p>
+      <p>أداة مجانية عبر الإنترنت - لا حاجة للتسجيل</p>
+      <p>تتم جميع العمليات في متصفحك المحلي، لا يتم جمع أو تخزين أي بيانات.</p>
+      <p>&copy; 2025 جميع الحقوق محفوظة</p>
+    </footer>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInfo = document.getElementById('fileInfo');
+    const convertBtn = document.getElementById('convertBtn');
+    const qualitySelect = document.getElementById('quality');
+    const qualityInfo = document.getElementById('qualityInfo');
+    let images = [];
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.style.backgroundColor = '#f0f8ff';
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.style.backgroundColor = '';
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.style.backgroundColor = '';
+      fileInput.files = e.dataTransfer.files;
+      handleFiles();
+    });
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', handleFiles);
+
+    qualitySelect.addEventListener('change', (e) => {
+      const quality = parseFloat(e.target.value);
+      if (quality === 0.9) {
+        qualityInfo.textContent = "(أفضل توازن بين الجودة وحجم الملف)";
+      } else if (quality === 0.7) {
+        qualityInfo.textContent = "(جودة جيدة مع حجم ملف أصغر)";
+      } else {
+        qualityInfo.textContent = "(أصغر حجم للملف مع فقدان ملحوظ في الجودة)";
+      }
+    });
+
+    function handleFiles() {
+      images = [];
+      preview.innerHTML = '';
+
+      if (fileInput.files.length === 0) {
+        fileInfo.textContent = 'لم يتم اختيار أي ملفات';
+        convertBtn.disabled = true;
+        return;
+      }
+
+      fileInfo.textContent = `${fileInput.files.length} ملف(ات) تم اختيارها`;
+      convertBtn.disabled = false;
+
+      Array.from(fileInput.files).forEach((file) => {
+        if (file.type === 'image/jpeg') {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+              const maxDimension = 2000;
+              let width = img.width;
+              let height = img.height;
+
+              if (width > height && width > maxDimension) {
+                height *= maxDimension / width;
+                width = maxDimension;
+              } else if (height > maxDimension) {
+                width *= maxDimension / height;
+                height = maxDimension;
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              images.push({ element: img, canvas: canvas, width: width, height: height });
+              createThumbnail(canvas.toDataURL('image/jpeg', 0.7), file.name);
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    function createThumbnail(dataUrl, filename) {
+      const previewItem = document.createElement('div');
+      previewItem.className = 'preview-item';
+      const img = document.createElement('img');
+      img.src = dataUrl;
+      img.alt = filename;
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = '×';
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        previewItem.remove();
+        images = images.filter(item => item.element.alt !== filename);
+        fileInfo.textContent = `${images.length} ملف(ات) متبقية`;
+        convertBtn.disabled = images.length === 0;
+      };
+      previewItem.appendChild(img);
+      previewItem.appendChild(removeBtn);
+      preview.appendChild(previewItem);
+    }
+
+    async function convertToPDF() {
+      if (images.length === 0) {
+        alert('يرجى تحميل صورة واحدة على الأقل بصيغة JPG.');
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'pt',
+        format: 'a4',
+        compress: true
+      });
+
+      convertBtn.disabled = true;
+      convertBtn.textContent = 'جاري تحسين ملف PDF...';
+
+      try {
+        const quality = parseFloat(qualitySelect.value);
+        for (let i = 0; i < images.length; i++) {
+          const imgData = images[i];
+          const canvas = imgData.canvas;
+          const optimizedDataUrl = canvas.toDataURL('image/jpeg', quality);
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+          const ratio = Math.min(pdfWidth / canvas.width, pdfHeight / canvas.height);
+          const imgWidth = canvas.width * ratio;
+          const imgHeight = canvas.height * ratio;
+          const x = (pdfWidth - imgWidth) / 2;
+          const y = (pdfHeight - imgHeight) / 2;
+          if (i > 0) pdf.addPage();
+          pdf.addImage(optimizedDataUrl, 'JPEG', x, y, imgWidth, imgHeight, undefined, 'FAST');
+        }
+
+        const url = URL.createObjectURL(pdf.output('blob'));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ملف-محسن-${new Date().toISOString().slice(0,10)}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+      } catch (error) {
+        console.error('خطأ أثناء التحويل:', error);
+        alert('حدث خطأ أثناء التحويل. يرجى المحاولة مرة أخرى مع عدد أقل أو صور أصغر.');
+      } finally {
+        convertBtn.disabled = false;
+        convertBtn.textContent = 'تحويل إلى PDF محسن';
+      }
+    }
+  </script>
+</body>
+</html>
